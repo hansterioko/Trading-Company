@@ -28,5 +28,10 @@ namespace Trading_Company
         {
 
         }
+
+        private void bAdding_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
