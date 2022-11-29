@@ -54,6 +54,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Purchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchase.Designer.cs">
+      <DependentUpon>Purchase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Shipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Shipment.Designer.cs">
+      <DependentUpon>Shipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Warehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse.Designer.cs">
+      <DependentUpon>Warehouse.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -65,7 +83,17 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Purchase.resx">
+      <DependentUpon>Purchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shipment.resx">
+      <DependentUpon>Shipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse.resx">
+      <DependentUpon>Warehouse.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -78,6 +106,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\png-clipart-computer-icons-shopping-world-wide-web-angle-logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f503c85dd8fc14dcfafdf7ab4094b3bd.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warehouse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shipment.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
