@@ -28,10 +28,5 @@ namespace Trading_Company
         {
 
         }
-
-        private void Purchase_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            System.Diagnostics.Process.GetCurrentProcess().Kill();
-        }
     }
 }

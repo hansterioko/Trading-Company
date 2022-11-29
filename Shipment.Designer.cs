@@ -47,10 +47,12 @@ namespace Trading_Company
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.bExitToMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Shipment";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shipment";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Shipment_FormClosing);
             this.ResumeLayout(false);
 
         }

@@ -49,6 +49,8 @@ namespace Trading_Company
             this.bShipment.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.bShipment.UseVisualStyleBackColor = false;
             this.bShipment.Click += new System.EventHandler(this.bShipment_Click);
+            this.bShipment.MouseEnter += new System.EventHandler(this.bShipment_MouseEnter);
+            this.bShipment.MouseLeave += new System.EventHandler(this.bShipment_MouseLeave);
             // 
             // bWarehouse
             // 
@@ -65,6 +67,8 @@ namespace Trading_Company
             this.bWarehouse.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.bWarehouse.UseVisualStyleBackColor = false;
             this.bWarehouse.Click += new System.EventHandler(this.bWarehouse_Click);
+            this.bWarehouse.MouseEnter += new System.EventHandler(this.bWarehouse_MouseEnter);
+            this.bWarehouse.MouseLeave += new System.EventHandler(this.bWarehouse_MouseLeave);
             // 
             // bPurchase
             // 
@@ -73,6 +77,7 @@ namespace Trading_Company
             this.bPurchase.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bPurchase.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bPurchase.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bPurchase.ForeColor = System.Drawing.SystemColors.ControlText;
             this.bPurchase.Location = new System.Drawing.Point(1, 0);
             this.bPurchase.Name = "bPurchase";
             this.bPurchase.Size = new System.Drawing.Size(238, 445);
@@ -81,6 +86,8 @@ namespace Trading_Company
             this.bPurchase.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.bPurchase.UseVisualStyleBackColor = false;
             this.bPurchase.Click += new System.EventHandler(this.bPurchase_Click);
+            this.bPurchase.MouseEnter += new System.EventHandler(this.bPurchase_MouseEnter);
+            this.bPurchase.MouseLeave += new System.EventHandler(this.bPurchase_MouseLeave);
             // 
             // Menu
             // 

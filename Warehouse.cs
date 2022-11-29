@@ -23,10 +23,5 @@ namespace Trading_Company
             menu.Show();
             this.Close();
         }
-
-        private void Warehouse_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            System.Diagnostics.Process.GetCurrentProcess().Kill();
-        }
     }
 }

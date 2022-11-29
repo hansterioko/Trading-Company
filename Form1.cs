@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Trading_Company
@@ -37,6 +38,36 @@ namespace Trading_Company
         private void Menu_FormClosing(object sender, FormClosingEventArgs e)
         {
             System.Diagnostics.Process.GetCurrentProcess().Kill(); // Закрытие меню полностью
+        }
+
+        private void bPurchase_MouseEnter(object sender, EventArgs e)
+        {
+            bPurchase.ForeColor = Color.BlueViolet;
+        }
+
+        private void bPurchase_MouseLeave(object sender, EventArgs e)
+        {
+            bPurchase.ForeColor = Color.Black;
+        }
+
+        private void bWarehouse_MouseEnter(object sender, EventArgs e)
+        {
+            bWarehouse.ForeColor = Color.BlueViolet;
+        }
+
+        private void bWarehouse_MouseLeave(object sender, EventArgs e)
+        {
+            bWarehouse.ForeColor = Color.Black;
+        }
+
+        private void bShipment_MouseEnter(object sender, EventArgs e)
+        {
+            bShipment.ForeColor = Color.BlueViolet;
+        }
+
+        private void bShipment_MouseLeave(object sender, EventArgs e)
+        {
+            bShipment.ForeColor = Color.Black;
         }
     }
 }
