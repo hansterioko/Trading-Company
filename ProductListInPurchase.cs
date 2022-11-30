@@ -19,7 +19,16 @@ namespace Trading_Company
 
         private void bAddProduct_Click(object sender, EventArgs e)
         {
+            AddProduct addProduct = new AddProduct();
+            addProduct.Show();
+            this.Close();
+        }
 
+        private void bExit_Click(object sender, EventArgs e)
+        {
+            Purchase purchase = new Purchase();
+            purchase.Show();
+            this.Close();
         }
     }
 }

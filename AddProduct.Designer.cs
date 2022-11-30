@@ -29,7 +29,7 @@ namespace Trading_Company
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picturePhoto = new System.Windows.Forms.PictureBox();
             this.nameBox1 = new System.Windows.Forms.TextBox();
             this.bAddPhoto = new System.Windows.Forms.Button();
             this.categoryBox2 = new System.Windows.Forms.TextBox();
@@ -44,17 +44,20 @@ namespace Trading_Company
             this.bAddProductInList = new System.Windows.Forms.Button();
             this.countBox1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.bCancel = new System.Windows.Forms.Button();
+            this.priceBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.picturePhoto)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // picturePhoto
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(13, 13);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(187, 147);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.picturePhoto.Location = new System.Drawing.Point(13, 13);
+            this.picturePhoto.Name = "picturePhoto";
+            this.picturePhoto.Size = new System.Drawing.Size(187, 147);
+            this.picturePhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picturePhoto.TabIndex = 0;
+            this.picturePhoto.TabStop = false;
             // 
             // nameBox1
             // 
@@ -98,7 +101,7 @@ namespace Trading_Company
             // 
             // richSummaryBox
             // 
-            this.richSummaryBox.Location = new System.Drawing.Point(12, 411);
+            this.richSummaryBox.Location = new System.Drawing.Point(12, 461);
             this.richSummaryBox.Name = "richSummaryBox";
             this.richSummaryBox.Size = new System.Drawing.Size(275, 105);
             this.richSummaryBox.TabIndex = 6;
@@ -134,7 +137,7 @@ namespace Trading_Company
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 395);
+            this.label4.Location = new System.Drawing.Point(16, 445);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 13);
             this.label4.TabIndex = 10;
@@ -151,9 +154,10 @@ namespace Trading_Company
             // 
             // bAddProductInList
             // 
-            this.bAddProductInList.Location = new System.Drawing.Point(13, 522);
+            this.bAddProductInList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.bAddProductInList.Location = new System.Drawing.Point(13, 572);
             this.bAddProductInList.Name = "bAddProductInList";
-            this.bAddProductInList.Size = new System.Drawing.Size(276, 23);
+            this.bAddProductInList.Size = new System.Drawing.Size(276, 31);
             this.bAddProductInList.TabIndex = 12;
             this.bAddProductInList.Text = "Добавить товар в список";
             this.bAddProductInList.UseVisualStyleBackColor = true;
@@ -176,11 +180,41 @@ namespace Trading_Company
             this.label6.TabIndex = 14;
             this.label6.Text = "Количество";
             // 
+            // bCancel
+            // 
+            this.bCancel.Location = new System.Drawing.Point(116, 617);
+            this.bCancel.Name = "bCancel";
+            this.bCancel.Size = new System.Drawing.Size(75, 23);
+            this.bCancel.TabIndex = 15;
+            this.bCancel.Text = "Отмена";
+            this.bCancel.UseVisualStyleBackColor = true;
+            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
+            // 
+            // priceBox
+            // 
+            this.priceBox.Location = new System.Drawing.Point(12, 397);
+            this.priceBox.Name = "priceBox";
+            this.priceBox.Size = new System.Drawing.Size(277, 20);
+            this.priceBox.TabIndex = 16;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(16, 383);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(33, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Цена";
+            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(296, 557);
+            this.ClientSize = new System.Drawing.Size(295, 654);
+            this.ControlBox = false;
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.priceBox);
+            this.Controls.Add(this.bCancel);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.countBox1);
             this.Controls.Add(this.bAddProductInList);
@@ -195,13 +229,13 @@ namespace Trading_Company
             this.Controls.Add(this.categoryBox2);
             this.Controls.Add(this.bAddPhoto);
             this.Controls.Add(this.nameBox1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.picturePhoto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;
             this.Name = "AddProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AddProduct";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Text = "Добавление товара в лист закупки";
+            ((System.ComponentModel.ISupportInitialize)(this.picturePhoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,7 +243,7 @@ namespace Trading_Company
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picturePhoto;
         private System.Windows.Forms.TextBox nameBox1;
         private System.Windows.Forms.Button bAddPhoto;
         private System.Windows.Forms.TextBox categoryBox2;
@@ -224,5 +258,8 @@ namespace Trading_Company
         private System.Windows.Forms.Button bAddProductInList;
         private System.Windows.Forms.TextBox countBox1;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button bCancel;
+        private System.Windows.Forms.TextBox priceBox;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -74,12 +74,14 @@ namespace Trading_Company
             this.bExit.TabIndex = 3;
             this.bExit.Text = "Назад";
             this.bExit.UseVisualStyleBackColor = true;
+            this.bExit.Click += new System.EventHandler(this.bExit_Click);
             // 
             // ProductListInPurchase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(608, 337);
+            this.ControlBox = false;
             this.Controls.Add(this.bExit);
             this.Controls.Add(this.bTradingToPurchase);
             this.Controls.Add(this.dataGridView1);
@@ -87,6 +89,7 @@ namespace Trading_Company
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;
             this.Name = "ProductListInPurchase";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProductListInPurchase";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
