@@ -24,8 +24,8 @@ namespace Trading_Company
 
             SQLiteCommand command = new SQLiteCommand("SELECT id FROM company WHERE name = '" + comboCompany.SelectedItem.ToString() + "'", ConnectionToDB.DB);
 
-            ProductListInPurchase productListInPurchase = new ProductListInPurchase(Convert.ToInt32(command.ExecuteScalar().ToString()));
-            productListInPurchase.Show();
+            DataTimeInPurchase dataTimeInPurchase = new DataTimeInPurchase(Convert.ToInt32(command.ExecuteScalar().ToString()));
+            dataTimeInPurchase.Show();
             this.Close();
 
             ConnectionToDB.closeDB();
@@ -37,6 +37,7 @@ namespace Trading_Company
 
             SQLiteCommand command = new SQLiteCommand("SELECT name FROM company", ConnectionToDB.DB);
             SQLiteDataReader read = command.ExecuteReader();
+
             while (read.Read())
             {
                 comboCompany.Items.Add(read["name"].ToString());
@@ -49,6 +50,7 @@ namespace Trading_Company
         {
             Purchase purchase = new Purchase();
             purchase.Show();
+
             this.Close();
         }
 
@@ -66,11 +68,12 @@ namespace Trading_Company
                 {
                     // Добавление компании
                     SQLiteCommand command = new SQLiteCommand("INSERT INTO company (name, telnumb, city, street, house) VALUES ('" + nameBox.Text + "', '" + telNumbBox.Text + "', '" + cityBox.Text + "', '" + streetBox.Text + "', '" + houseBox.Text + "')", ConnectionToDB.DB);
-                    command.ExecuteNonQuery(); 
+                    command.ExecuteNonQuery();
 
                     // Поиск id компании и передача в форму листа закупок
-                    ProductListInPurchase productListInPurchase = new ProductListInPurchase(Convert.ToInt32(ifCMD.ExecuteScalar().ToString()));
-                    productListInPurchase.Show();
+                    DataTimeInPurchase dataTimeInPurchase = new DataTimeInPurchase(Convert.ToInt32(ifCMD.ExecuteScalar().ToString()));
+                    dataTimeInPurchase.Show();
+                    ConnectionToDB.closeDB();
                     this.Close();
                 }
                 else
@@ -86,6 +89,7 @@ namespace Trading_Company
                     // Переход на форму листа закупок с передачей id компании
                     ProductListInPurchase productListInPurchase = new ProductListInPurchase(Convert.ToInt32(ifCMD.ExecuteScalar().ToString()));
                     productListInPurchase.Show();
+                    ConnectionToDB.closeDB();
                     this.Close();
                 }
             }

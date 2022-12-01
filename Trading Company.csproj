@@ -73,6 +73,12 @@
       <DependentUpon>AddProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="ConnectionToDB.cs" />
+    <Compile Include="DataTimeInPurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataTimeInPurchase.Designer.cs">
+      <DependentUpon>DataTimeInPurchase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     </Compile>
     <EmbeddedResource Include="AddProduct.resx">
       <DependentUpon>AddProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataTimeInPurchase.resx">
+      <DependentUpon>DataTimeInPurchase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
