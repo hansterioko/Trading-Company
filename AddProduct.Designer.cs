@@ -29,7 +29,6 @@ namespace Trading_Company
         /// </summary>
         private void InitializeComponent()
         {
-            this.picturePhoto = new System.Windows.Forms.PictureBox();
             this.nameBox1 = new System.Windows.Forms.TextBox();
             this.bAddPhoto = new System.Windows.Forms.Button();
             this.categoryBox2 = new System.Windows.Forms.TextBox();
@@ -47,17 +46,9 @@ namespace Trading_Company
             this.bCancel = new System.Windows.Forms.Button();
             this.priceBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.picturePhoto = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picturePhoto)).BeginInit();
             this.SuspendLayout();
-            // 
-            // picturePhoto
-            // 
-            this.picturePhoto.Location = new System.Drawing.Point(13, 13);
-            this.picturePhoto.Name = "picturePhoto";
-            this.picturePhoto.Size = new System.Drawing.Size(187, 147);
-            this.picturePhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picturePhoto.TabIndex = 0;
-            this.picturePhoto.TabStop = false;
             // 
             // nameBox1
             // 
@@ -196,6 +187,7 @@ namespace Trading_Company
             this.priceBox.Name = "priceBox";
             this.priceBox.Size = new System.Drawing.Size(277, 20);
             this.priceBox.TabIndex = 16;
+            this.priceBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.priceBox_KeyPress);
             // 
             // label7
             // 
@@ -205,6 +197,15 @@ namespace Trading_Company
             this.label7.Size = new System.Drawing.Size(33, 13);
             this.label7.TabIndex = 17;
             this.label7.Text = "Цена";
+            // 
+            // picturePhoto
+            // 
+            this.picturePhoto.Location = new System.Drawing.Point(13, 13);
+            this.picturePhoto.Name = "picturePhoto";
+            this.picturePhoto.Size = new System.Drawing.Size(187, 147);
+            this.picturePhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picturePhoto.TabIndex = 0;
+            this.picturePhoto.TabStop = false;
             // 
             // AddProduct
             // 

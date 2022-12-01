@@ -14,9 +14,11 @@ namespace Trading_Company
 {
     public partial class AddProduct : Form
     {
-        public AddProduct()
+        int id_purchase;
+        public AddProduct(int id_purchase)
         {
             InitializeComponent();
+            this.id_purchase = id_purchase;
         }
 
         byte[] photo = GetPhoto(@"noPhoto.png");
@@ -83,27 +85,28 @@ namespace Trading_Company
                 {
                     //  Т.к. не нашло, то создаётся новый товар
                     command = new SQLiteCommand("INSERT INTO products (name, category, characteristic, unit_of_measurement, vat, image) VALUES ('" + nameBox1.Text + "', '" + categoryBox2.Text + "', " +
-                    "'" + richSummaryBox.Text + "', '" + unitBox3.Text + "', '" + vatBox4.Text + "', '"+ photo +"')", ConnectionToDB.DB);
+                    "'" + richSummaryBox.Text + "', '" + unitBox3.Text + "', '" + vatBox4.Text + "', '" + photo + "')", ConnectionToDB.DB);
                     command.ExecuteNonQuery();
 
                     // Запись о товаре на склад
-                    warehouseCMD = new SQLiteCommand("INSERT INTO warehouse (id_product, count_product, sector_on_warehouse) VALUES ('"+ ifCMD.ExecuteScalar().ToString() + "', '"+ Convert.ToInt32(countBox1.Text) +"', '"+ ifCMD.ExecuteScalar().ToString() + nameBox1.Text[0] +"')", ConnectionToDB.DB);
+                    warehouseCMD = new SQLiteCommand("INSERT INTO warehouse (id_product, count_product, sector_on_warehouse) VALUES ('" + ifCMD.ExecuteScalar().ToString() + "', '" + Convert.ToInt32(countBox1.Text) + "', '" + ifCMD.ExecuteScalar().ToString() + nameBox1.Text[0] + "')", ConnectionToDB.DB);
                     warehouseCMD.ExecuteNonQuery();
                 }
                 else
                 {
                     // Т.к. такой товар уже создан, то его НДС обновляется и ...
-                    command = new SQLiteCommand("UPDATE products SET , vat = '" + vatBox4.Text + "' WHERE id = '"+ ifCMD.ExecuteScalar().ToString() + "'", ConnectionToDB.DB);
+                    command = new SQLiteCommand("UPDATE products SET vat = '" + vatBox4.Text + "' WHERE id = '" + ifCMD.ExecuteScalar().ToString() + "'", ConnectionToDB.DB);
                     command.ExecuteNonQuery();
 
                     // И добавляется количество на складе
-                    warehouseCMD = new SQLiteCommand("UPDATE warehouse SET count_product = count_product + '"+ Convert.ToInt32(countBox1.Text) +"' WHERE id_product = '"+ ifCMD.ExecuteScalar().ToString() + "'", ConnectionToDB.DB);
+                    warehouseCMD = new SQLiteCommand("UPDATE warehouse SET count_product = count_product + '" + Convert.ToInt32(countBox1.Text) + "' WHERE id_product = '" + ifCMD.ExecuteScalar().ToString() + "'", ConnectionToDB.DB);
                     warehouseCMD.ExecuteNonQuery();
                 }
 
+                int id_prod = Convert.ToInt32(ifCMD.ExecuteScalar());
                 ConnectionToDB.closeDB();
-
-                ProductListInPurchase productListInPurchase = new ProductListInPurchase(Convert.ToInt32(priceBox.Text), Convert.ToInt32(countBox1.Text), Convert.ToInt32(ifCMD.ExecuteScalar()));
+                ProductListInPurchase productListInPurchase = new ProductListInPurchase(Convert.ToInt32(priceBox.Text), Convert.ToInt32(countBox1.Text), id_prod, id_purchase);
+                
                 productListInPurchase.Show();
                 this.Close();
             }
@@ -128,6 +131,16 @@ namespace Trading_Company
             ProductListInPurchase productListInPurchase = new ProductListInPurchase();
             productListInPurchase.Show();
             this.Close();
+        }
+
+        private void priceBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+
+            // Если пользователь ввёл не цифру,запятую и не нажал на Backspace, то не отображаем символ в textbox
+            // 8 это Backspace
+            if (!Char.IsDigit(number) && number != 8)
+                e.Handled = true;
         }
     }
 }

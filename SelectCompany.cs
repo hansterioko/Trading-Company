@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 
@@ -26,9 +19,8 @@ namespace Trading_Company
 
             DataTimeInPurchase dataTimeInPurchase = new DataTimeInPurchase(Convert.ToInt32(command.ExecuteScalar().ToString()));
             dataTimeInPurchase.Show();
-            this.Close();
-
             ConnectionToDB.closeDB();
+            this.Close();
         }
 
         private void SelectCompany_Load(object sender, EventArgs e)

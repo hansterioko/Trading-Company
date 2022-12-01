@@ -32,10 +32,12 @@ namespace Trading_Company
 
             command = new SQLiteCommand("SELECT MAX(id) FROM purchase", ConnectionToDB.DB);
 
-            ProductListInPurchase productListInPurchase = new ProductListInPurchase(Convert.ToInt32(command.ExecuteScalar()));
-            productListInPurchase.Show();
+            int id_purchase = Convert.ToInt32(command.ExecuteScalar());
             ConnectionToDB.closeDB();
-            this.Hide();
+
+            ProductListInPurchase productListInPurchase = new ProductListInPurchase(id_purchase);
+            productListInPurchase.Show();
+            this.Close();
 
         }
     }

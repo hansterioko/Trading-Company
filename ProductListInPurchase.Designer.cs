@@ -49,11 +49,17 @@ namespace Trading_Company
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(13, 13);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(408, 312);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // bTradingToPurchase
             // 
@@ -64,6 +70,7 @@ namespace Trading_Company
             this.bTradingToPurchase.TabIndex = 2;
             this.bTradingToPurchase.Text = "Отправить в закупку";
             this.bTradingToPurchase.UseVisualStyleBackColor = true;
+            this.bTradingToPurchase.Click += new System.EventHandler(this.bTradingToPurchase_Click);
             // 
             // bExit
             // 
@@ -91,6 +98,7 @@ namespace Trading_Company
             this.Name = "ProductListInPurchase";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProductListInPurchase";
+            this.Load += new System.EventHandler(this.ProductListInPurchase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
