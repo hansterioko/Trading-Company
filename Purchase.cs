@@ -31,8 +31,10 @@ namespace Trading_Company
 
         private void bAdding_Click(object sender, EventArgs e)
         {
-            ProductListInPurchase productListInPurchase = new ProductListInPurchase();
-            productListInPurchase.Show();
+            SelectCompany selectCompany = new SelectCompany();
+            selectCompany.Show();
+            //ProductListInPurchase productListInPurchase = new ProductListInPurchase();
+            //productListInPurchase.Show();
             this.Close();
         }
     }

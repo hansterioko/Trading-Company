@@ -12,9 +12,16 @@ namespace Trading_Company
 {
     public partial class ProductListInPurchase : Form
     {
+        int id_company;
         public ProductListInPurchase()
         {
             InitializeComponent();
+        }
+
+        public ProductListInPurchase(int id_company)
+        {
+            InitializeComponent();
+            this.id_company = id_company;
         }
 
         private void bAddProduct_Click(object sender, EventArgs e)
