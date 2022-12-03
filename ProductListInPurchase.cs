@@ -54,6 +54,19 @@ namespace Trading_Company
             SQLiteCommand deletePurchase = new SQLiteCommand("DELETE FROM purchase WHERE id = '"+ id_purchase +"'", ConnectionToDB.DB);
             deletePurchase.ExecuteNonQuery();
 
+            // удалять созданный товар, если его кол-во равно созданому, либо вычитать кол-во
+
+
+            // ВНИМАНИЕ
+
+
+            // ВНИМАНИЕ  // ВНИМАНИЕ     // ВНИМАНИЕ     // ВНИМАНИЕ     // ВНИМАНИЕ
+
+            // ВНИМАНИЕ
+
+            // ВНИМАНИЕ
+
+
             if (dataGridView1.RowCount != 0)
             {
                 for (int i = 0; i < dataGridView1.RowCount; i++)

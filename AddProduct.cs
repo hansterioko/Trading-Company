@@ -4,9 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 
@@ -76,7 +73,8 @@ namespace Trading_Company
                 SQLiteCommand warehouseCMD;
 
                 // Поиск id, где имя, категория и описание сходятся с написанным в форме
-                SQLiteCommand ifCMD = new SQLiteCommand("SELECT id FROM products WHERE id IN (SELECT id FROM products WHERE name = '" + nameBox1.Text + "' AND category = '" + categoryBox2.Text + "' AND characteristic = '" + richSummaryBox.Text + "')", ConnectionToDB.DB);
+                SQLiteCommand ifCMD = new SQLiteCommand("SELECT id FROM products WHERE id IN (SELECT id FROM products WHERE name = '" + nameBox1.Text + "' AND category = '" + categoryBox2.Text + "' AND characteristic = '" + richSummaryBox.Text + "' AND vat = '" + vatBox4.Text + "' AND unit_of_measurement = '" + unitBox3.Text + "' AND image = @photo)", ConnectionToDB.DB);
+                ifCMD.Parameters.AddWithValue("@photo", photo);
 
                 ifCMD.CommandType = CommandType.Text;
 
@@ -96,8 +94,8 @@ namespace Trading_Company
                 else
                 {
                     // Т.к. такой товар уже создан, то его НДС обновляется и ...
-                    command = new SQLiteCommand("UPDATE products SET vat = '" + vatBox4.Text + "' WHERE id = '" + ifCMD.ExecuteScalar().ToString() + "'", ConnectionToDB.DB);
-                    command.ExecuteNonQuery();
+                    //command = new SQLiteCommand("UPDATE products SET vat = '" + vatBox4.Text + "' WHERE id = '" + ifCMD.ExecuteScalar().ToString() + "'", ConnectionToDB.DB);
+                    //command.ExecuteNonQuery();
 
                     // И добавляется количество на складе
                     warehouseCMD = new SQLiteCommand("UPDATE warehouse SET count_product = count_product + '" + Convert.ToInt32(countBox1.Text) + "' WHERE id_product = '" + ifCMD.ExecuteScalar().ToString() + "'", ConnectionToDB.DB);

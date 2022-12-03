@@ -41,6 +41,12 @@ namespace Trading_Company
             this.label5 = new System.Windows.Forms.Label();
             this.bDeleteProduct = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.bChange = new System.Windows.Forms.Button();
+            this.bOk = new System.Windows.Forms.Button();
+            this.unitBox = new System.Windows.Forms.TextBox();
+            this.vatBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +68,7 @@ namespace Trading_Company
             // 
             // richSummaryBox
             // 
-            this.richSummaryBox.Location = new System.Drawing.Point(12, 182);
+            this.richSummaryBox.Location = new System.Drawing.Point(15, 324);
             this.richSummaryBox.Name = "richSummaryBox";
             this.richSummaryBox.ReadOnly = true;
             this.richSummaryBox.Size = new System.Drawing.Size(314, 69);
@@ -124,7 +130,7 @@ namespace Trading_Company
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 166);
+            this.label5.Location = new System.Drawing.Point(15, 308);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 13);
             this.label5.TabIndex = 10;
@@ -133,7 +139,7 @@ namespace Trading_Company
             // bDeleteProduct
             // 
             this.bDeleteProduct.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.bDeleteProduct.Location = new System.Drawing.Point(15, 257);
+            this.bDeleteProduct.Location = new System.Drawing.Point(18, 399);
             this.bDeleteProduct.Name = "bDeleteProduct";
             this.bDeleteProduct.Size = new System.Drawing.Size(304, 23);
             this.bDeleteProduct.TabIndex = 11;
@@ -149,12 +155,74 @@ namespace Trading_Company
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // bChange
+            // 
+            this.bChange.Location = new System.Drawing.Point(18, 429);
+            this.bChange.Name = "bChange";
+            this.bChange.Size = new System.Drawing.Size(154, 23);
+            this.bChange.TabIndex = 12;
+            this.bChange.Text = "Изменить";
+            this.bChange.UseVisualStyleBackColor = true;
+            this.bChange.Click += new System.EventHandler(this.bChange_Click);
+            // 
+            // bOk
+            // 
+            this.bOk.Location = new System.Drawing.Point(181, 429);
+            this.bOk.Name = "bOk";
+            this.bOk.Size = new System.Drawing.Size(141, 23);
+            this.bOk.TabIndex = 13;
+            this.bOk.Text = "Сохранить";
+            this.bOk.UseVisualStyleBackColor = true;
+            this.bOk.Visible = false;
+            this.bOk.Click += new System.EventHandler(this.bOk_Click);
+            // 
+            // unitBox
+            // 
+            this.unitBox.Location = new System.Drawing.Point(21, 178);
+            this.unitBox.Name = "unitBox";
+            this.unitBox.ReadOnly = true;
+            this.unitBox.Size = new System.Drawing.Size(148, 20);
+            this.unitBox.TabIndex = 14;
+            // 
+            // vatBox
+            // 
+            this.vatBox.Location = new System.Drawing.Point(178, 178);
+            this.vatBox.Name = "vatBox";
+            this.vatBox.ReadOnly = true;
+            this.vatBox.Size = new System.Drawing.Size(148, 20);
+            this.vatBox.TabIndex = 15;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(18, 163);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(109, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Единица измерения";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(175, 162);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(31, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "НДС";
             // 
             // CurrentProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 285);
+            this.ClientSize = new System.Drawing.Size(334, 461);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.vatBox);
+            this.Controls.Add(this.unitBox);
+            this.Controls.Add(this.bOk);
+            this.Controls.Add(this.bChange);
             this.Controls.Add(this.bDeleteProduct);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -193,5 +261,11 @@ namespace Trading_Company
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button bDeleteProduct;
+        private System.Windows.Forms.Button bChange;
+        private System.Windows.Forms.Button bOk;
+        private System.Windows.Forms.TextBox unitBox;
+        private System.Windows.Forms.TextBox vatBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
