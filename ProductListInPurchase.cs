@@ -54,6 +54,15 @@ namespace Trading_Company
             SQLiteCommand deletePurchase = new SQLiteCommand("DELETE FROM purchase WHERE id = '"+ id_purchase +"'", ConnectionToDB.DB);
             deletePurchase.ExecuteNonQuery();
 
+            if (dataGridView1.RowCount != 0)
+            {
+                for (int i = 0; i < dataGridView1.RowCount; i++)
+                {
+                    SQLiteCommand deleteProductList = new SQLiteCommand("DELETE FROM product_list_in_purchase WHERE id_purchase = '" + id_purchase + "'", ConnectionToDB.DB);
+                    deleteProductList.ExecuteNonQuery();
+                }
+            }
+
             ConnectionToDB.closeDB();
             Purchase purchase = new Purchase();
             purchase.Show();
@@ -104,9 +113,15 @@ namespace Trading_Company
                 int id = Convert.ToInt32(updatePurchase.ExecuteScalar());
                 ConnectionToDB.closeDB();
 
+                int count = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[2].Value);
 
-                CurrentProduct currentProduct = new CurrentProduct(id);
-                currentProduct.ShowDialog();
+                int price = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
+
+                CurrentProduct currentProduct = new CurrentProduct(id, id_purchase, count, price);
+                if (currentProduct.ShowDialog() == DialogResult.Cancel)
+                {
+                    ProductListInPurchase_Load(sender, e);
+                }
             }
         }
     }

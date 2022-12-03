@@ -85,7 +85,8 @@ namespace Trading_Company
                 {
                     //  Т.к. не нашло, то создаётся новый товар
                     command = new SQLiteCommand("INSERT INTO products (name, category, characteristic, unit_of_measurement, vat, image) VALUES ('" + nameBox1.Text + "', '" + categoryBox2.Text + "', " +
-                    "'" + richSummaryBox.Text + "', '" + unitBox3.Text + "', '" + vatBox4.Text + "', '" + photo + "')", ConnectionToDB.DB);
+                    "'" + richSummaryBox.Text + "', '" + unitBox3.Text + "', '" + vatBox4.Text + "', @photo)", ConnectionToDB.DB);
+                    command.Parameters.AddWithValue("@photo", photo);
                     command.ExecuteNonQuery();
 
                     // Запись о товаре на склад

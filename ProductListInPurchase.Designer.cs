@@ -39,7 +39,7 @@ namespace Trading_Company
             // bAddProduct
             // 
             this.bAddProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.bAddProduct.Location = new System.Drawing.Point(442, 141);
+            this.bAddProduct.Location = new System.Drawing.Point(463, 136);
             this.bAddProduct.Name = "bAddProduct";
             this.bAddProduct.Size = new System.Drawing.Size(154, 65);
             this.bAddProduct.TabIndex = 0;
@@ -57,14 +57,14 @@ namespace Trading_Company
             this.dataGridView1.Location = new System.Drawing.Point(13, 13);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(408, 312);
+            this.dataGridView1.Size = new System.Drawing.Size(444, 312);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // bTradingToPurchase
             // 
             this.bTradingToPurchase.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.bTradingToPurchase.Location = new System.Drawing.Point(442, 31);
+            this.bTradingToPurchase.Location = new System.Drawing.Point(463, 26);
             this.bTradingToPurchase.Name = "bTradingToPurchase";
             this.bTradingToPurchase.Size = new System.Drawing.Size(154, 70);
             this.bTradingToPurchase.TabIndex = 2;
@@ -75,7 +75,7 @@ namespace Trading_Company
             // bExit
             // 
             this.bExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.bExit.Location = new System.Drawing.Point(494, 285);
+            this.bExit.Location = new System.Drawing.Point(515, 280);
             this.bExit.Name = "bExit";
             this.bExit.Size = new System.Drawing.Size(102, 40);
             this.bExit.TabIndex = 3;
@@ -87,7 +87,7 @@ namespace Trading_Company
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 337);
+            this.ClientSize = new System.Drawing.Size(629, 337);
             this.ControlBox = false;
             this.Controls.Add(this.bExit);
             this.Controls.Add(this.bTradingToPurchase);

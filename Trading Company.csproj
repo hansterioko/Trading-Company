@@ -186,6 +186,12 @@
   <ItemGroup>
     <None Include="Resources\shipment.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-garbage-158725.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-garbage-1587251.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

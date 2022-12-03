@@ -73,6 +73,26 @@ namespace Trading_Company.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap free_icon_garbage_158725 {
+            get {
+                object obj = ResourceManager.GetObject("free-icon-garbage-158725", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap free_icon_garbage_1587251 {
+            get {
+                object obj = ResourceManager.GetObject("free-icon-garbage-1587251", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap png_clipart_computer_icons_shopping_world_wide_web_angle_logo {
             get {
                 object obj = ResourceManager.GetObject("png-clipart-computer-icons-shopping-world-wide-web-angle-logo", resourceCulture);
