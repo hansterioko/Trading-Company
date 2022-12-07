@@ -68,7 +68,7 @@ namespace Trading_Company
             // 
             // richSummaryBox
             // 
-            this.richSummaryBox.Location = new System.Drawing.Point(15, 324);
+            this.richSummaryBox.Location = new System.Drawing.Point(12, 229);
             this.richSummaryBox.Name = "richSummaryBox";
             this.richSummaryBox.ReadOnly = true;
             this.richSummaryBox.Size = new System.Drawing.Size(314, 69);
@@ -130,7 +130,7 @@ namespace Trading_Company
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 308);
+            this.label5.Location = new System.Drawing.Point(12, 213);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 13);
             this.label5.TabIndex = 10;
@@ -139,7 +139,7 @@ namespace Trading_Company
             // bDeleteProduct
             // 
             this.bDeleteProduct.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.bDeleteProduct.Location = new System.Drawing.Point(18, 399);
+            this.bDeleteProduct.Location = new System.Drawing.Point(15, 304);
             this.bDeleteProduct.Name = "bDeleteProduct";
             this.bDeleteProduct.Size = new System.Drawing.Size(304, 23);
             this.bDeleteProduct.TabIndex = 11;
@@ -159,7 +159,7 @@ namespace Trading_Company
             // 
             // bChange
             // 
-            this.bChange.Location = new System.Drawing.Point(18, 429);
+            this.bChange.Location = new System.Drawing.Point(15, 334);
             this.bChange.Name = "bChange";
             this.bChange.Size = new System.Drawing.Size(154, 23);
             this.bChange.TabIndex = 12;
@@ -169,7 +169,7 @@ namespace Trading_Company
             // 
             // bOk
             // 
-            this.bOk.Location = new System.Drawing.Point(181, 429);
+            this.bOk.Location = new System.Drawing.Point(178, 334);
             this.bOk.Name = "bOk";
             this.bOk.Size = new System.Drawing.Size(141, 23);
             this.bOk.TabIndex = 13;
@@ -216,7 +216,7 @@ namespace Trading_Company
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 461);
+            this.ClientSize = new System.Drawing.Size(334, 366);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.vatBox);

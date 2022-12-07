@@ -39,11 +39,11 @@ namespace Trading_Company
             {
                 //Get the path of specified file
                 filePath = openFileDialog.FileName;
+                picturePhoto.Image = Image.FromFile(filePath);
 
+                photo = GetPhoto(filePath);
             }
-            picturePhoto.Image = Image.FromFile(filePath);
-
-           photo = GetPhoto(filePath);
+            
 
         }
 
