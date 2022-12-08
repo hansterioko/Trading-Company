@@ -27,7 +27,8 @@ namespace Trading_Company
             ConnectionToDB.openDB();
 
             // Добавление закупки в таблицу, но со значением 0 для цены     Далее обновим значения
-            SQLiteCommand command = new SQLiteCommand("INSERT INTO purchase (id_company, purchase_price, purchase_date) VALUES ('"+ id_company + "', 0, '"+ dateTime +"')", ConnectionToDB.DB);
+            SQLiteCommand command = new SQLiteCommand("INSERT INTO purchase (id_company, purchase_price, purchase_date) VALUES ('"+ id_company + "', 0, @dateTime)", ConnectionToDB.DB);
+            command.Parameters.AddWithValue("@dateTime", dateTime);
             command.ExecuteNonQuery();
 
             command = new SQLiteCommand("SELECT MAX(id) FROM purchase", ConnectionToDB.DB);

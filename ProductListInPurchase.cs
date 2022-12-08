@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Data;
+using System.Drawing;
 
 namespace Trading_Company
 {
@@ -79,28 +80,28 @@ namespace Trading_Company
                 {
                     
                     SQLiteCommand ifCMD = new SQLiteCommand("SELECT count_product FROM warehouse WHERE id_product = (SELECT product_list_in_purchase.id_product FROM product_list_in_purchase JOIN products ON " +
-                    "product_list_in_purchase.id_product = products.id WHERE product_list_in_purchase.id_purchase = '" + id_purchase + "' AND products.name = '" + dataGridView1.Rows[i].Cells[0].Value.ToString() + "')", ConnectionToDB.DB);
+                    "product_list_in_purchase.id_product = products.id WHERE product_list_in_purchase.id_purchase = '" + id_purchase + "' AND products.name = '" + dataGridView1.Rows[i].Cells[1].Value.ToString() + "')", ConnectionToDB.DB);
                     //ifCMD = new SQLiteCommand("SELECT id FROM products WHERE name = '"+ dataGridView1.Rows[i].Cells[0].Value.ToString() + "'", ConnectionToDB.DB);
                     //richTextBox1.Text += ifCMD.ExecuteScalar().ToString();
 
-                    if (ifCMD.ExecuteScalar().ToString().Equals(dataGridView1.Rows[i].Cells[2].Value.ToString()))
+                    if (ifCMD.ExecuteScalar().ToString().Equals(dataGridView1.Rows[i].Cells[3].Value.ToString()))
                     {
                         SQLiteCommand delFromWarehouse = new SQLiteCommand("DELETE FROM warehouse WHERE id_product = (SELECT product_list_in_purchase.id_product FROM product_list_in_purchase JOIN products ON " +
                         "product_list_in_purchase.id_product = products.id AND " +
-                        "products.name = '" + dataGridView1.Rows[i].Cells[0].Value.ToString() + "' WHERE product_list_in_purchase.id_purchase = '" + id_purchase + "')", ConnectionToDB.DB);
+                        "products.name = '" + dataGridView1.Rows[i].Cells[1].Value.ToString() + "' WHERE product_list_in_purchase.id_purchase = '" + id_purchase + "')", ConnectionToDB.DB);
                         delFromWarehouse.ExecuteNonQuery();
 
                         SQLiteCommand delProd = new SQLiteCommand("DELETE FROM products WHERE id = (SELECT product_list_in_purchase.id_product FROM product_list_in_purchase JOIN products ON " +
                         "product_list_in_purchase.id_product = products.id AND " +
-                        "products.name = '" + dataGridView1.Rows[i].Cells[0].Value.ToString() + "' WHERE product_list_in_purchase.id_purchase = '" + id_purchase + "')", ConnectionToDB.DB);
+                        "products.name = '" + dataGridView1.Rows[i].Cells[1].Value.ToString() + "' WHERE product_list_in_purchase.id_purchase = '" + id_purchase + "')", ConnectionToDB.DB);
                         delProd.ExecuteNonQuery();
                        
                     }
                     else
                     {
-                        SQLiteCommand upd = new SQLiteCommand("UPDATE warehouse SET count_product = count_product - '" + dataGridView1.Rows[i].Cells[2].Value + "' WHERE id_product = (SELECT product_list_in_purchase.id_product FROM product_list_in_purchase JOIN products ON " +
+                        SQLiteCommand upd = new SQLiteCommand("UPDATE warehouse SET count_product = count_product - '" + dataGridView1.Rows[i].Cells[3].Value + "' WHERE id_product = (SELECT product_list_in_purchase.id_product FROM product_list_in_purchase JOIN products ON " +
                         "product_list_in_purchase.id_product = products.id AND " +
-                        "products.name = '" + dataGridView1.Rows[i].Cells[0].Value.ToString() + "' WHERE product_list_in_purchase.id_purchase = '" + id_purchase + "')", ConnectionToDB.DB);
+                        "products.name = '" + dataGridView1.Rows[i].Cells[1].Value.ToString() + "' WHERE product_list_in_purchase.id_purchase = '" + id_purchase + "')", ConnectionToDB.DB);
                         upd.ExecuteNonQuery();
                     }
 
@@ -139,36 +140,47 @@ namespace Trading_Company
         private void bTradingToPurchase_Click(object sender, EventArgs e)
         {
             ConnectionToDB.openDB();
-            SQLiteCommand cost = new SQLiteCommand("SELECT price_product_in_purchase, count_product_in_purchase FROM product_list_in_purchase WHERE id_purchase = '" + id_purchase + "'", ConnectionToDB.DB);
-            SQLiteDataReader reader = cost.ExecuteReader();
-            while (reader.Read())
+
+            SQLiteCommand ifCMD = new SQLiteCommand("SELECT id_product FROM price_product_in_purchase WHERE id_purchase = '"+ id_purchase +"'", ConnectionToDB.DB);
+            if (ifCMD.ExecuteScalar() == null)
             {
-                price_purchase += Convert.ToInt32(reader["count_product_in_purchase"]) * Convert.ToInt32(reader["price_product_in_purchase"]);
+                MessageBox.Show("Лист закупки пуст!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+            {
+                SQLiteCommand cost = new SQLiteCommand("SELECT price_product_in_purchase, count_product_in_purchase FROM product_list_in_purchase WHERE id_purchase = '" + id_purchase + "'", ConnectionToDB.DB);
+                SQLiteDataReader reader = cost.ExecuteReader();
+                while (reader.Read())
+                {
+                    price_purchase += Convert.ToInt32(reader["count_product_in_purchase"]) * Convert.ToInt32(reader["price_product_in_purchase"]);
+                }
 
 
 
-            SQLiteCommand updatePurchase = new SQLiteCommand("UPDATE purchase SET purchase_price = '" + price_purchase + "' WHERE id = '" + id_purchase + "'", ConnectionToDB.DB);
-            updatePurchase.ExecuteNonQuery();
+                SQLiteCommand updatePurchase = new SQLiteCommand("UPDATE purchase SET purchase_price = '" + price_purchase + "' WHERE id = '" + id_purchase + "'", ConnectionToDB.DB);
+                updatePurchase.ExecuteNonQuery();
 
 
-            ConnectionToDB.closeDB();
-            Purchase purchase = new Purchase();
-            purchase.Show();
-            this.Close();
+                ConnectionToDB.closeDB();
+                Purchase purchase = new Purchase();
+                purchase.Show();
+                this.Close();
+            }
         }
 
         private void ProductListInPurchase_Load(object sender, EventArgs e)
         {
             ConnectionToDB.openDB();
 
-            SQLiteCommand updatePurchase = new SQLiteCommand("SELECT products.name AS 'Название', product_list_in_purchase.price_product_in_purchase AS 'Цена за единицу товара', product_list_in_purchase.count_product_in_purchase AS 'Кол-во товара' FROM " +
-                "product_list_in_purchase JOIN products ON product_list_in_purchase.id_product = products.id AND product_list_in_purchase.id_purchase = '"+ id_purchase +"'", ConnectionToDB.DB);
-            
+
+            SQLiteCommand updatePurchase = new SQLiteCommand("SELECT product_list_in_purchase.id_product AS 'Номер', products.name AS 'Название', product_list_in_purchase.price_product_in_purchase AS 'Цена за единицу товара', product_list_in_purchase.count_product_in_purchase AS 'Кол-во товара' FROM " +
+                "product_list_in_purchase JOIN products ON product_list_in_purchase.id_product = products.id AND product_list_in_purchase.id_purchase = '" + id_purchase + "'", ConnectionToDB.DB);
+
             SQLiteDataReader reader = updatePurchase.ExecuteReader();
             DataTable dt = new DataTable();
             dt.Load(reader);
             dataGridView1.DataSource = dt;
+            dataGridView1.Columns[0].Visible = false;
 
             ConnectionToDB.closeDB();
         }
@@ -177,27 +189,61 @@ namespace Trading_Company
         // При нажатии на ячейку выводит инфу
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           
-            if (dataGridView1.CurrentCell != null && dataGridView1.CurrentCell.ColumnIndex == 0 && e.RowIndex != -1)
+            if (dataGridView1.CurrentCell != null && dataGridView1.CurrentCell.ColumnIndex == 1 && e.RowIndex != -1)
             {
-                ConnectionToDB.openDB();
+                
 
-                SQLiteCommand updatePurchase = new SQLiteCommand("SELECT product_list_in_purchase.id_product FROM product_list_in_purchase JOIN products ON " +
-                    "product_list_in_purchase.id_product = products.id AND " +
-                    "products.name = '" + dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString() + "' WHERE product_list_in_purchase.id_purchase = '" + id_purchase + "'", ConnectionToDB.DB);
-                int id = Convert.ToInt32(updatePurchase.ExecuteScalar());
+                //SQLiteCommand updatePurchase = new SQLiteCommand("SELECT product_list_in_purchase.id_product FROM product_list_in_purchase JOIN products ON " +
+                //    "product_list_in_purchase.id_product = products.id AND " +
+                //    "products.name = '" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "' WHERE product_list_in_purchase.id_purchase = '" + id_purchase + "' AND product_list_in_purchase.id_product = '" + dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", ConnectionToDB.DB);
+                int id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
                 ConnectionToDB.closeDB();
 
-                int count = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[2].Value);
+                int count = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[3].Value);
 
-                int price = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
+                int price = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[2].Value);
 
-                CurrentProduct currentProduct = new CurrentProduct(id, id_purchase, count, price);
+
+                CurrentProduct currentProduct = new CurrentProduct(id, id_purchase, count, price, false);
                 if (currentProduct.ShowDialog() == DialogResult.Cancel)
                 {
                     ProductListInPurchase_Load(sender, e);
                 }
             }
+        }
+
+
+        private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //if (e.ColumnIndex == 1)
+            //{
+            //    this.dataGridView1.Cursor = Cursors.Hand;
+            //}
+            //this.dataGridView1.Cursor = Cursors.Default;
+        }
+
+        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 1 && e.RowIndex > -1)
+            {
+                this.dataGridView1.Cursor = Cursors.Hand;
+                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.AliceBlue;
+            }
+            
+        }
+
+        private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 1 && e.RowIndex > -1)
+            {
+                this.dataGridView1.Cursor = Cursors.Default;
+                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.White;
+            }
+        }
+
+        private void dataGridView1_MouseEnter(object sender, EventArgs e)
+        {
+            //this.dataGridView1.Cursor = Cursors.Default;
         }
     }
 }

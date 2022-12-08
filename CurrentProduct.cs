@@ -18,9 +18,42 @@ namespace Trading_Company
         bool flag = false;
         byte[] photo, basePhoto;
         string name, category, vat, unit, summary;
-        public CurrentProduct(int id, int id_purchase, int count, int price)
+
+        private void countBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            // Если пользователь ввёл не цифру,запятую и не нажал на Backspace, то не отображаем символ в textbox
+            // 8 это Backspace
+            if (!Char.IsDigit(number) && number != 8)
+                e.Handled = true;
+        }
+
+        private void priceBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            // Если пользователь ввёл не цифру,запятую и не нажал на Backspace, то не отображаем символ в textbox
+            // 8 это Backspace
+            if (!Char.IsDigit(number) && number != 8)
+                e.Handled = true;
+        }
+
+        private void vatBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            // Если пользователь ввёл не цифру,запятую и не нажал на Backspace, то не отображаем символ в textbox
+            // 8 это Backspace
+            if (!Char.IsDigit(number) && number != 8)
+                e.Handled = true;
+        }
+
+        public CurrentProduct(int id, int id_purchase, int count, int price, bool detail)
         {
             InitializeComponent();
+            if (detail)
+            {
+                bDeleteProduct.Visible = false;
+                bChange.Visible = false;
+            }
             this.id = id;
             this.id_purchase = id_purchase;
             this.count = count;
@@ -28,7 +61,7 @@ namespace Trading_Company
 
             ConnectionToDB.openDB();
 
-            SQLiteCommand param = new SQLiteCommand("SELECT name FROM products WHERE id = '"+ id +"'", ConnectionToDB.DB);
+            SQLiteCommand param = new SQLiteCommand("SELECT name FROM products WHERE id = '" + id + "'", ConnectionToDB.DB);
             nameBox.Text = param.ExecuteScalar().ToString();
             name = nameBox.Text;
 

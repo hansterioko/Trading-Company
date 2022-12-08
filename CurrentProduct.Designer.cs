@@ -82,6 +82,7 @@ namespace Trading_Company
             this.priceBox.ReadOnly = true;
             this.priceBox.Size = new System.Drawing.Size(148, 20);
             this.priceBox.TabIndex = 4;
+            this.priceBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.priceBox_KeyPress);
             // 
             // countBox
             // 
@@ -90,6 +91,7 @@ namespace Trading_Company
             this.countBox.ReadOnly = true;
             this.countBox.Size = new System.Drawing.Size(148, 20);
             this.countBox.TabIndex = 5;
+            this.countBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.countBox_KeyPress);
             // 
             // label1
             // 
@@ -193,6 +195,7 @@ namespace Trading_Company
             this.vatBox.ReadOnly = true;
             this.vatBox.Size = new System.Drawing.Size(148, 20);
             this.vatBox.TabIndex = 15;
+            this.vatBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.vatBox_KeyPress);
             // 
             // label6
             // 
