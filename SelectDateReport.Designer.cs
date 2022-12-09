@@ -46,6 +46,7 @@ namespace Trading_Company
             this.fromDate.Name = "fromDate";
             this.fromDate.Size = new System.Drawing.Size(200, 20);
             this.fromDate.TabIndex = 4;
+            this.fromDate.Value = new System.DateTime(2022, 12, 9, 18, 49, 2, 0);
             // 
             // fromTimePicker
             // 
@@ -131,8 +132,8 @@ namespace Trading_Company
             this.Controls.Add(this.fromTimePicker);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "SelectDateReport";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "SelectDateReport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Период закупок";
             this.ResumeLayout(false);
             this.PerformLayout();
 

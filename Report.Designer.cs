@@ -30,7 +30,7 @@ namespace Trading_Company
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richReport = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -43,23 +43,28 @@ namespace Trading_Company
             this.label1.TabIndex = 0;
             this.label1.Text = "Закупки";
             // 
-            // richTextBox1
+            // richReport
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(18, 52);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(588, 386);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
+            this.richReport.Location = new System.Drawing.Point(18, 52);
+            this.richReport.Name = "richReport";
+            this.richReport.ReadOnly = true;
+            this.richReport.Size = new System.Drawing.Size(588, 386);
+            this.richReport.TabIndex = 1;
+            this.richReport.Text = "";
             // 
             // Report
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 450);
-            this.Controls.Add(this.richTextBox1);
+            this.ClientSize = new System.Drawing.Size(625, 450);
+            this.Controls.Add(this.richReport);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Report";
-            this.Text = "Report";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Отчёт";
             this.Load += new System.EventHandler(this.Report_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -69,6 +74,6 @@ namespace Trading_Company
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richReport;
     }
 }

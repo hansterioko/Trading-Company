@@ -141,7 +141,7 @@ namespace Trading_Company
         {
             ConnectionToDB.openDB();
 
-            SQLiteCommand ifCMD = new SQLiteCommand("SELECT id_product FROM price_product_in_purchase WHERE id_purchase = '"+ id_purchase +"'", ConnectionToDB.DB);
+            SQLiteCommand ifCMD = new SQLiteCommand("SELECT id_product FROM product_list_in_purchase WHERE id_purchase = '"+ id_purchase +"'", ConnectionToDB.DB);
             if (ifCMD.ExecuteScalar() == null)
             {
                 MessageBox.Show("Лист закупки пуст!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -23,7 +23,7 @@ namespace Trading_Company
         {
             DateTime dateTime = new DateTime();
             dateTime = dateTimePicker1.Value.Date + dateTimePicker2.Value.TimeOfDay;
-
+            
             ConnectionToDB.openDB();
 
             // Добавление закупки в таблицу, но со значением 0 для цены     Далее обновим значения

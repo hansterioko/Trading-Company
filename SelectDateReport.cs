@@ -19,15 +19,17 @@ namespace Trading_Company
 
         private void bOk_Click(object sender, EventArgs e)
         {
-            DateTime fromDateTime = new DateTime();
-            fromDateTime = fromTimePicker.Value.Date + fromDate.Value.TimeOfDay;
+            DateTime fromDateTime = fromDateTime = fromDate.Value.Date + fromTimePicker.Value.TimeOfDay;
 
-            DateTime byDateTime = new DateTime();
-            byDateTime = byTimePicker.Value.Date + byDate.Value.TimeOfDay;
+
+            DateTime byDateTime = byDateTime = byDate.Value.Date + byTimePicker.Value.TimeOfDay;
+
+
+
 
             Report report = new Report(fromDateTime, byDateTime);
-            report.Show();
-            this.Close();
+            report.ShowDialog();
+            //this.Close();
         }
 
         private void bExit_Click(object sender, EventArgs e)
