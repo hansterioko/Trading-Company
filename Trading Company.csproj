@@ -73,6 +73,12 @@
       <DependentUpon>AddProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="ConnectionToDB.cs" />
+    <Compile Include="CurrentProdOnWarehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CurrentProdOnWarehouse.Designer.cs">
+      <DependentUpon>CurrentProdOnWarehouse.cs</DependentUpon>
+    </Compile>
     <Compile Include="CurrentProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,9 @@
     </Compile>
     <EmbeddedResource Include="AddProduct.resx">
       <DependentUpon>AddProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CurrentProdOnWarehouse.resx">
+      <DependentUpon>CurrentProdOnWarehouse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CurrentProduct.resx">
       <DependentUpon>CurrentProduct.cs</DependentUpon>

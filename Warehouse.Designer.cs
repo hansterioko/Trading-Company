@@ -30,11 +30,13 @@ namespace Trading_Company
         private void InitializeComponent()
         {
             this.bExitToMenu = new System.Windows.Forms.Button();
+            this.warehouseGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.warehouseGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // bExitToMenu
             // 
-            this.bExitToMenu.Location = new System.Drawing.Point(628, 408);
+            this.bExitToMenu.Location = new System.Drawing.Point(345, 391);
             this.bExitToMenu.Name = "bExitToMenu";
             this.bExitToMenu.Size = new System.Drawing.Size(160, 30);
             this.bExitToMenu.TabIndex = 2;
@@ -42,17 +44,38 @@ namespace Trading_Company
             this.bExitToMenu.UseVisualStyleBackColor = true;
             this.bExitToMenu.Click += new System.EventHandler(this.bExitToMenu_Click);
             // 
+            // warehouseGridView
+            // 
+            this.warehouseGridView.AllowUserToAddRows = false;
+            this.warehouseGridView.AllowUserToDeleteRows = false;
+            this.warehouseGridView.AllowUserToOrderColumns = true;
+            this.warehouseGridView.AllowUserToResizeColumns = false;
+            this.warehouseGridView.AllowUserToResizeRows = false;
+            this.warehouseGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.warehouseGridView.Location = new System.Drawing.Point(13, 13);
+            this.warehouseGridView.Name = "warehouseGridView";
+            this.warehouseGridView.ReadOnly = true;
+            this.warehouseGridView.RowHeadersVisible = false;
+            this.warehouseGridView.Size = new System.Drawing.Size(492, 359);
+            this.warehouseGridView.TabIndex = 3;
+            this.warehouseGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.warehouseGridView_CellClick);
+            this.warehouseGridView.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.warehouseGridView_CellMouseEnter);
+            this.warehouseGridView.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.warehouseGridView_CellMouseLeave);
+            // 
             // Warehouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(522, 433);
             this.ControlBox = false;
+            this.Controls.Add(this.warehouseGridView);
             this.Controls.Add(this.bExitToMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Warehouse";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Warehouse";
+            this.Text = "Склад";
+            this.Load += new System.EventHandler(this.Warehouse_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.warehouseGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -60,5 +83,6 @@ namespace Trading_Company
         #endregion
 
         private System.Windows.Forms.Button bExitToMenu;
+        private System.Windows.Forms.DataGridView warehouseGridView;
     }
 }
