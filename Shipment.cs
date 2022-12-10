@@ -25,5 +25,12 @@ namespace Trading_Company
             menu.Show();
             this.Close();
         }
+
+        private void bAddShipment_Click(object sender, EventArgs e)
+        {
+            SelectShop selectShop = new SelectShop();
+            selectShop.Show();
+            this.Close();
+        }
     }
 }

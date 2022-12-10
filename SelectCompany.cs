@@ -56,7 +56,7 @@ namespace Trading_Company
             // Если компания с таким-то именем найдена, то true
             if (ifCMD.ExecuteScalar() == null)
             {
-                if (nameBox.Text != "" && telNumbBox.Text != "" && cityBox.Text != "" && streetBox.Text != "" && houseBox.Text != "")
+                if (nameBox.Text != "" && cityBox.Text != "" && streetBox.Text != "" && houseBox.Text != "")
                 {
                     // Добавление компании
                     SQLiteCommand command = new SQLiteCommand("INSERT INTO company (name, telnumb, city, street, house) VALUES ('" + nameBox.Text + "', '" + telNumbBox.Text + "', '" + cityBox.Text + "', '" + streetBox.Text + "', '" + houseBox.Text + "')", ConnectionToDB.DB);
