@@ -148,16 +148,16 @@ namespace Trading_Company
             }
             else
             {
-                SQLiteCommand cost = new SQLiteCommand("SELECT price_product_in_purchase, count_product_in_purchase FROM product_list_in_purchase WHERE id_purchase = '" + id_purchase + "'", ConnectionToDB.DB);
-                SQLiteDataReader reader = cost.ExecuteReader();
-                while (reader.Read())
-                {
-                    price_purchase += Convert.ToInt32(reader["count_product_in_purchase"]) * Convert.ToInt32(reader["price_product_in_purchase"]);
-                }
+                //SQLiteCommand cost = new SQLiteCommand("SELECT price_product_in_purchase, count_product_in_purchase FROM product_list_in_purchase WHERE id_purchase = '" + id_purchase + "'", ConnectionToDB.DB);
+                //SQLiteDataReader reader = cost.ExecuteReader();
+                //while (reader.Read())
+                //{
+                //    price_purchase += Convert.ToInt32(reader["count_product_in_purchase"]) * Convert.ToInt32(reader["price_product_in_purchase"]);
+                //}
 
 
 
-                SQLiteCommand updatePurchase = new SQLiteCommand("UPDATE purchase SET purchase_price = '" + price_purchase + "' WHERE id = '" + id_purchase + "'", ConnectionToDB.DB);
+                SQLiteCommand updatePurchase = new SQLiteCommand("UPDATE purchase SET purchase_price = '" + /*price_purchase*/100 + "' WHERE id = '" + id_purchase + "'", ConnectionToDB.DB);
                 updatePurchase.ExecuteNonQuery();
 
 

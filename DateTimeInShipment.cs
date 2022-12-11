@@ -42,7 +42,7 @@ namespace Trading_Company
             int id_shipment = Convert.ToInt32(command.ExecuteScalar());
             ConnectionToDB.closeDB();
 
-            ProductListInShipment productListInShipment = new ProductListInShipment();
+            ProductListInShipment productListInShipment = new ProductListInShipment(id_shipment);
             productListInShipment.Show();
             this.Close();
 

@@ -13,17 +13,16 @@ namespace Trading_Company
 {
     public partial class ProductListInShipment : Form
     {
-        public ProductListInShipment()
+        int id_shipment;
+        public ProductListInShipment(int id_shipment)
         {
             InitializeComponent();
+            this.id_shipment = id_shipment;
         }
 
         private void shipListGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > -1 && e.ColumnIndex == 0 && Convert.ToBoolean(shipListGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) == true)
-            {
-                MessageBox.Show("Da");
-            }
+           
         }
 
         private void ProductListInShipment_Load(object sender, EventArgs e)
@@ -38,7 +37,13 @@ namespace Trading_Company
             shipListGridView.DataSource = dt;
             shipListGridView.Columns[5].Visible = false;
 
+            shipListGridView.Columns.Add("cost", "Цена продажи");
+            shipListGridView.Columns.Add("count", "кол-во для продажи");
+            shipListGridView.Columns[6].DefaultCellStyle.BackColor = Color.DimGray;
+            shipListGridView.Columns[7].DefaultCellStyle.BackColor = Color.DimGray;
+
             setReadOnly();
+
 
             ConnectionToDB.closeDB();
         }
@@ -58,7 +63,78 @@ namespace Trading_Company
 
         private void shipListGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            if (e.RowIndex > -1 && e.ColumnIndex == 0)
+            {
+                DataGridViewCheckBoxCell sel = new DataGridViewCheckBoxCell();
+                sel = (DataGridViewCheckBoxCell)shipListGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                if (sel.Value == null)
+                    sel.Value = false;
+
+                switch (sel.Value.ToString())
+                {
+                    case "True":
+                        sel.Value = false;
+                        break;
+                    case "False":
+                        sel.Value = true;
+                        MessageBox.Show("Введите цену и количество товара в поставке", "Товар выбран", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                }
+               
+                if (sel.Value.ToString().Equals("True"))
+                {
+                    shipListGridView.Rows[e.RowIndex].Cells[6].ReadOnly = false;
+                    shipListGridView.Rows[e.RowIndex].Cells[7].ReadOnly = false;
+
+                    shipListGridView.Rows[e.RowIndex].Cells[6].Style.BackColor = Color.AntiqueWhite;
+                    shipListGridView.Rows[e.RowIndex].Cells[7].Style.BackColor = Color.AntiqueWhite;
+                }
+                else
+                {
+                    shipListGridView.Rows[e.RowIndex].Cells[6].ReadOnly = true;
+                    shipListGridView.Rows[e.RowIndex].Cells[7].ReadOnly = true;
+
+                    shipListGridView.Rows[e.RowIndex].Cells[6].Style.BackColor = Color.DimGray;
+                    shipListGridView.Rows[e.RowIndex].Cells[7].Style.BackColor = Color.DimGray;
+                }
+            }
+        }
+
+        private void discountBar_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bUpdShipment_Click(object sender, EventArgs e)
+        {
+            bool flag = true;
+            for (int i = 0; i < shipListGridView.Rows.Count; i++)
+            {
+                if (Convert.ToInt32(shipListGridView.Rows[i].Cells[3].Value) < Convert.ToInt32(shipListGridView.Rows[i].Cells[7].Value))
+                {
+                    MessageBox.Show("Количество товара на складе меньше, чем в поставке!\nУкажите меньшее количество у товара \"" + shipListGridView.Rows[i].Cells[1].Value.ToString() + "\"");
+                    flag = false;
+                }
+            }
+
+            if (flag)
+            {
+                ConnectionToDB.openDB();
+
+                for (int i = 0; i < shipListGridView.Rows.Count; i++)
+                {
+                    if (shipListGridView.Rows[i].Cells[0].Value != null && shipListGridView.Rows[i].Cells[0].Value.ToString().Equals("True"))
+                    {
+                        SQLiteCommand addToList = new SQLiteCommand("INSERT INTO product_list_in_shipment (id_product, id_shipment, price_product_in_shipment, count_product_in_shipment) VALUES ('" + shipListGridView.Rows[i].Cells[5].Value.ToString() + "', '" + id_shipment + "', '" + shipListGridView.Rows[i].Cells[6].Value.ToString() + "', '" + shipListGridView.Rows[i].Cells[7].Value.ToString() + "')", ConnectionToDB.DB);
+                        addToList.ExecuteNonQuery();
+                    }
+                }
+
+                ConnectionToDB.closeDB();
+                Shipment shipment = new Shipment();
+                shipment.Show();
+                this.Close();
+            }
         }
     }
 }
