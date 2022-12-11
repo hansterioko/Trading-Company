@@ -56,6 +56,8 @@ namespace Trading_Company
             this.shipListGridView.TabIndex = 0;
             this.shipListGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.shipListGridView_CellClick);
             this.shipListGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.shipListGridView_CellContentClick);
+            this.shipListGridView.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.shipListGridView_CellMouseEnter);
+            this.shipListGridView.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.shipListGridView_CellMouseLeave);
             this.shipListGridView.CellStateChanged += new System.Windows.Forms.DataGridViewCellStateChangedEventHandler(this.shipListGridView_CellStateChanged);
             // 
             // selected
@@ -93,6 +95,7 @@ namespace Trading_Company
             this.bExit.TabIndex = 3;
             this.bExit.Text = "Выход";
             this.bExit.UseVisualStyleBackColor = true;
+            this.bExit.Click += new System.EventHandler(this.bExit_Click);
             // 
             // label1
             // 
@@ -120,14 +123,17 @@ namespace Trading_Company
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.discountBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bExit);
             this.Controls.Add(this.bUpdShipment);
             this.Controls.Add(this.discountBar);
             this.Controls.Add(this.shipListGridView);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ProductListInShipment";
-            this.Text = "ProductListInShipment";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Выберите товары";
             this.Load += new System.EventHandler(this.ProductListInShipment_Load);
             ((System.ComponentModel.ISupportInitialize)(this.shipListGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.discountBar)).EndInit();

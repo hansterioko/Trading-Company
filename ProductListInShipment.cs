@@ -22,7 +22,14 @@ namespace Trading_Company
 
         private void shipListGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+            if (shipListGridView.CurrentCell != null && shipListGridView.CurrentCell.ColumnIndex == 1 && e.RowIndex != -1)
+            {
+
+                int id_product = Convert.ToInt32(shipListGridView.Rows[e.RowIndex].Cells[5].Value);
+
+                CurrentProdOnWarehouse currentProdOnWarehouse = new CurrentProdOnWarehouse(id_product);
+                currentProdOnWarehouse.ShowDialog();
+            }
         }
 
         private void ProductListInShipment_Load(object sender, EventArgs e)
@@ -127,6 +134,20 @@ namespace Trading_Company
                     {
                         SQLiteCommand addToList = new SQLiteCommand("INSERT INTO product_list_in_shipment (id_product, id_shipment, price_product_in_shipment, count_product_in_shipment) VALUES ('" + shipListGridView.Rows[i].Cells[5].Value.ToString() + "', '" + id_shipment + "', '" + shipListGridView.Rows[i].Cells[6].Value.ToString() + "', '" + shipListGridView.Rows[i].Cells[7].Value.ToString() + "')", ConnectionToDB.DB);
                         addToList.ExecuteNonQuery();
+
+                        SQLiteCommand ifCMD = new SQLiteCommand("SELECT count_product FROM warehouse WHERE id_product = '"+ shipListGridView.Rows[i].Cells[5].Value.ToString() + "'", ConnectionToDB.DB);
+                        if (Convert.ToInt32(ifCMD.ExecuteScalar()) == Convert.ToInt32(shipListGridView.Rows[i].Cells[7].Value))
+                        {
+                            SQLiteCommand deleteProd = new SQLiteCommand("DELETE FROM products WHERE id = '"+ shipListGridView.Rows[i].Cells[5].Value.ToString() + "'", ConnectionToDB.DB);
+                            deleteProd.ExecuteNonQuery();
+                            deleteProd = new SQLiteCommand("DELETE FROM warehouse WHERE id_product = '" + shipListGridView.Rows[i].Cells[5].Value.ToString() + "'", ConnectionToDB.DB);
+                            deleteProd.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            SQLiteCommand changeWarehouse = new SQLiteCommand("UPDATE warehouse SET count_product = count_product - '"+ shipListGridView.Rows[i].Cells[7].Value.ToString() + "' WHERE id_product = '" + shipListGridView.Rows[i].Cells[5].Value.ToString() + "'", ConnectionToDB.DB);
+                            changeWarehouse.ExecuteNonQuery();
+                        }
                         SQLiteCommand addDiscount = new SQLiteCommand("UPDATE shipment SET discount = '"+ discountBox.Text +"' WHERE id = (SELECT MAX(id) FROM shipment)", ConnectionToDB.DB);
                         addDiscount.ExecuteNonQuery();
                     }
@@ -136,6 +157,38 @@ namespace Trading_Company
                 Shipment shipment = new Shipment();
                 shipment.Show();
                 this.Close();
+            }
+        }
+
+        private void bExit_Click(object sender, EventArgs e)
+        {
+            ConnectionToDB.openDB();
+
+            SQLiteCommand command = new SQLiteCommand("DELETE FROM shipment WHERE id = (SELECT MAX(id) FROM shipment)", ConnectionToDB.DB);
+            command.ExecuteNonQuery();
+
+            ConnectionToDB.closeDB();
+
+            Shipment shipment = new Shipment();
+            shipment.Show();
+            this.Close();
+        }
+
+        private void shipListGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 1 && e.RowIndex > -1)
+            {
+                this.shipListGridView.Cursor = Cursors.Hand;
+                shipListGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.AliceBlue;
+            }
+        }
+
+        private void shipListGridView_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 1 && e.RowIndex > -1)
+            {
+                this.shipListGridView.Cursor = Cursors.Default;
+                shipListGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.White;
             }
         }
     }

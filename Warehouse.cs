@@ -48,12 +48,9 @@ namespace Trading_Company
             {
 
                 id_product = Convert.ToInt32(warehouseGridView.Rows[e.RowIndex].Cells[4].Value);
-                
+
                 CurrentProdOnWarehouse currentProdOnWarehouse = new CurrentProdOnWarehouse(id_product);
-                if (currentProdOnWarehouse.ShowDialog() == DialogResult.Cancel)
-                {
-                    Warehouse_Load(sender, e);
-                }
+                currentProdOnWarehouse.ShowDialog();
             }
         }
 
