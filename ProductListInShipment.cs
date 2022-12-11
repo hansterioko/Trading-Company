@@ -102,7 +102,7 @@ namespace Trading_Company
 
         private void discountBar_Scroll(object sender, EventArgs e)
         {
-
+            discountBox.Text = discountBar.Value.ToString();
         }
 
         private void bUpdShipment_Click(object sender, EventArgs e)
@@ -127,6 +127,8 @@ namespace Trading_Company
                     {
                         SQLiteCommand addToList = new SQLiteCommand("INSERT INTO product_list_in_shipment (id_product, id_shipment, price_product_in_shipment, count_product_in_shipment) VALUES ('" + shipListGridView.Rows[i].Cells[5].Value.ToString() + "', '" + id_shipment + "', '" + shipListGridView.Rows[i].Cells[6].Value.ToString() + "', '" + shipListGridView.Rows[i].Cells[7].Value.ToString() + "')", ConnectionToDB.DB);
                         addToList.ExecuteNonQuery();
+                        SQLiteCommand addDiscount = new SQLiteCommand("UPDATE shipment SET discount = '"+ discountBox.Text +"' WHERE id = (SELECT MAX(id) FROM shipment)", ConnectionToDB.DB);
+                        addDiscount.ExecuteNonQuery();
                     }
                 }
 

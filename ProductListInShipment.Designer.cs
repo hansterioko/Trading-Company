@@ -35,7 +35,7 @@ namespace Trading_Company
             this.bUpdShipment = new System.Windows.Forms.Button();
             this.bExit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.discountBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.shipListGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.discountBar)).BeginInit();
             this.SuspendLayout();
@@ -66,6 +66,7 @@ namespace Trading_Company
             // discountBar
             // 
             this.discountBar.Location = new System.Drawing.Point(333, 393);
+            this.discountBar.Maximum = 100;
             this.discountBar.Name = "discountBar";
             this.discountBar.Size = new System.Drawing.Size(257, 45);
             this.discountBar.TabIndex = 1;
@@ -103,21 +104,23 @@ namespace Trading_Company
             this.label1.TabIndex = 4;
             this.label1.Text = "Общая скидка для магазина";
             // 
-            // textBox1
+            // discountBox
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(403, 348);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(108, 29);
-            this.textBox1.TabIndex = 5;
+            this.discountBox.BackColor = System.Drawing.SystemColors.Control;
+            this.discountBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.discountBox.Location = new System.Drawing.Point(403, 348);
+            this.discountBox.Name = "discountBox";
+            this.discountBox.ReadOnly = true;
+            this.discountBox.Size = new System.Drawing.Size(108, 29);
+            this.discountBox.TabIndex = 5;
+            this.discountBox.Text = "0";
             // 
             // ProductListInShipment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.discountBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bExit);
             this.Controls.Add(this.bUpdShipment);
@@ -141,6 +144,6 @@ namespace Trading_Company
         private System.Windows.Forms.Button bUpdShipment;
         private System.Windows.Forms.Button bExit;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox discountBox;
     }
 }
