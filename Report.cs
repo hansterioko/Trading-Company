@@ -13,6 +13,8 @@ namespace Trading_Company
 {
     public partial class Report : Form
     {
+        public List<int> listCompany = new List<int>();
+
         bool itShipment;
         DateTime fromDate, byDate;
         public Report(DateTime fromDate, DateTime byDate, bool itShipment)
@@ -22,16 +24,44 @@ namespace Trading_Company
             this.byDate = byDate;
 
             this.itShipment = itShipment;
+
+            if (itShipment)
+            {
+                ConnectionToDB.openDB();
+                SQLiteCommand getIDCompany = new SQLiteCommand("SELECT id FROM company", ConnectionToDB.DB);
+                SQLiteDataReader readCompany = getIDCompany.ExecuteReader();
+                while (readCompany.Read())
+                {
+                    listCompany.Add(Convert.ToInt32(readCompany["id"]));
+                }
+                ConnectionToDB.closeDB();
+            }
+        }
+
+        private void bSelectCompany_Click(object sender, EventArgs e)
+        {
+            SelectCompanyForReport selectCompanyForReport = new SelectCompanyForReport();
+            
+            if (selectCompanyForReport.ShowDialog() == DialogResult.OK)
+            {
+                listCompany = selectCompanyForReport.listCompany;
+              //  MessageBox.Show("Диалог рез ОК");
+                Report_Load(sender, e);
+            }
         }
 
         private void Report_Load(object sender, EventArgs e)
         {
+           // MessageBox.Show("ЗАПУСК");
+            richReport.Clear();
 
             if (itShipment)
             {
                 #region Отчёт по поставке
-                label1.Text = "Поставки с " + fromDate.ToString() + " по " + byDate.ToString();
                 ConnectionToDB.openDB();
+
+                label1.Text = "Поставки с " + fromDate.ToString() + " по " + byDate.ToString();
+                
 
                 SQLiteCommand countShipment = new SQLiteCommand("SELECT id, id_shop, shipment_date, shipment_price, discount FROM shipment WHERE shipment_date >= @fromDate AND shipment_date <= @byDate", ConnectionToDB.DB);
                 countShipment.Parameters.Add("@fromDate", DbType.DateTime).Value = fromDate;
@@ -56,8 +86,19 @@ namespace Trading_Company
                     richReport.Text += "Продукты в поставке:\n";
                     while (readerProd.Read())
                     {
+                        if(readerProd == null)
+                        {
+                            richReport.Text += "    Товаров нет\n";
+                        }
                         SQLiteCommand command = new SQLiteCommand("SELECT name FROM company WHERE id = '" + readerProd["id_company"].ToString() + "'", ConnectionToDB.DB);
-                        richReport.Text += "Наименование: " + readerProd["name"].ToString() + "      Описание: " + readerProd["characteristic"].ToString() + "     Кол-во: " + readerProd["count_product_in_shipment"].ToString() + "     По цене: " + readerProd["price_product_in_shipment"].ToString() + "\nОт фирмы: " + command.ExecuteScalar().ToString() + "\n";
+                        if (listCompany.Contains(Convert.ToInt32(readerProd["id_company"])))
+                        {
+                            richReport.Text += "Наименование: " + readerProd["name"].ToString() + "      Описание: " + readerProd["characteristic"].ToString() + "     Кол-во: " + readerProd["count_product_in_shipment"].ToString() + "     По цене: " + readerProd["price_product_in_shipment"].ToString() + "\nОт фирмы: " + command.ExecuteScalar().ToString() + "\n";
+                        }
+                        else
+                        {
+                            richReport.Text += "Товаров от выбранных фирм нет\n";
+                        }
                     }
                     richReport.Text += "\n\n";
                 }

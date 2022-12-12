@@ -147,6 +147,12 @@
     <Compile Include="SelectCompany.Designer.cs">
       <DependentUpon>SelectCompany.cs</DependentUpon>
     </Compile>
+    <Compile Include="SelectCompanyForReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectCompanyForReport.Designer.cs">
+      <DependentUpon>SelectCompanyForReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectDateReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SelectCompany.resx">
       <DependentUpon>SelectCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectCompanyForReport.resx">
+      <DependentUpon>SelectCompanyForReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectDateReport.resx">
       <DependentUpon>SelectDateReport.cs</DependentUpon>

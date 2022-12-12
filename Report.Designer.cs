@@ -31,6 +31,8 @@ namespace Trading_Company
         {
             this.label1 = new System.Windows.Forms.Label();
             this.richReport = new System.Windows.Forms.RichTextBox();
+            this.bSelectCompany = new System.Windows.Forms.Button();
+            this.bSelectShop = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -53,11 +55,34 @@ namespace Trading_Company
             this.richReport.TabIndex = 1;
             this.richReport.Text = "";
             // 
+            // bSelectCompany
+            // 
+            this.bSelectCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.bSelectCompany.Location = new System.Drawing.Point(54, 444);
+            this.bSelectCompany.Name = "bSelectCompany";
+            this.bSelectCompany.Size = new System.Drawing.Size(135, 33);
+            this.bSelectCompany.TabIndex = 2;
+            this.bSelectCompany.Text = "Выбор фирм";
+            this.bSelectCompany.UseVisualStyleBackColor = true;
+            this.bSelectCompany.Click += new System.EventHandler(this.bSelectCompany_Click);
+            // 
+            // bSelectShop
+            // 
+            this.bSelectShop.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.bSelectShop.Location = new System.Drawing.Point(450, 444);
+            this.bSelectShop.Name = "bSelectShop";
+            this.bSelectShop.Size = new System.Drawing.Size(135, 33);
+            this.bSelectShop.TabIndex = 3;
+            this.bSelectShop.Text = "Выбор магазинов";
+            this.bSelectShop.UseVisualStyleBackColor = true;
+            // 
             // Report
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 450);
+            this.ClientSize = new System.Drawing.Size(645, 483);
+            this.Controls.Add(this.bSelectShop);
+            this.Controls.Add(this.bSelectCompany);
             this.Controls.Add(this.richReport);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -76,5 +101,7 @@ namespace Trading_Company
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox richReport;
+        private System.Windows.Forms.Button bSelectCompany;
+        private System.Windows.Forms.Button bSelectShop;
     }
 }
