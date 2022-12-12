@@ -75,6 +75,7 @@ namespace Trading_Company
             this.bSelectShop.TabIndex = 3;
             this.bSelectShop.Text = "Выбор магазинов";
             this.bSelectShop.UseVisualStyleBackColor = true;
+            this.bSelectShop.Click += new System.EventHandler(this.bSelectShop_Click);
             // 
             // Report
             // 

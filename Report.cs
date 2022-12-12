@@ -13,7 +13,8 @@ namespace Trading_Company
 {
     public partial class Report : Form
     {
-        public List<int> listCompany = new List<int>();
+        private List<int> listCompany = new List<int>();
+        private List<int> listShop = new List<int>();
 
         bool itShipment;
         DateTime fromDate, byDate;
@@ -34,7 +35,19 @@ namespace Trading_Company
                 {
                     listCompany.Add(Convert.ToInt32(readCompany["id"]));
                 }
+
+                SQLiteCommand getIDShop = new SQLiteCommand("SELECT id FROM shops", ConnectionToDB.DB);
+                SQLiteDataReader readShop = getIDShop.ExecuteReader();
+                while (readShop.Read())
+                {
+                    listShop.Add(Convert.ToInt32(readShop["id"]));
+                }
                 ConnectionToDB.closeDB();
+            }
+            else
+            {
+                bSelectCompany.Visible = false;
+                bSelectShop.Visible = false;
             }
         }
 
@@ -46,6 +59,17 @@ namespace Trading_Company
             {
                 listCompany = selectCompanyForReport.listCompany;
               //  MessageBox.Show("Диалог рез ОК");
+                Report_Load(sender, e);
+            }
+        }
+
+        private void bSelectShop_Click(object sender, EventArgs e)
+        {
+            SelectShopForReport selectShopForReport = new SelectShopForReport();
+            if (selectShopForReport.ShowDialog() == DialogResult.OK)
+            {
+                listShop = selectShopForReport.listShop;
+
                 Report_Load(sender, e);
             }
         }
@@ -75,33 +99,37 @@ namespace Trading_Company
                 SQLiteDataReader reader = countShipment.ExecuteReader();
                 while (reader.Read())
                 {
-                    SQLiteCommand nameCompany = new SQLiteCommand("SELECT name FROM shops WHERE id = '" + reader["id_shop"] + "'", ConnectionToDB.DB);
-                    richReport.Text += "Поставка под номером " + reader["id"].ToString() + " в магазин \"" + nameCompany.ExecuteScalar().ToString() + "\"\n";
-                    richReport.Text += "Дата поставки: " + reader["shipment_date"] + "        Сумма поставки: " + reader["shipment_price"] + "   Скидка составила: "+ reader["discount"] +"\n";
-
-                    SQLiteCommand products = new SQLiteCommand("SELECT products.id_company, products.characteristic, products.name, product_list_in_shipment.price_product_in_shipment, product_list_in_shipment.count_product_in_shipment FROM " +
-                    "product_list_in_shipment JOIN products ON product_list_in_shipment.id_product = products.id AND product_list_in_shipment.id_shipment = '" + reader["id"] + "'", ConnectionToDB.DB);
-                    SQLiteDataReader readerProd = products.ExecuteReader();
-
-                    richReport.Text += "Продукты в поставке:\n";
-                    while (readerProd.Read())
+                    if (listShop.Contains(Convert.ToInt32(reader["id_shop"])))
                     {
-                        if(readerProd == null)
+                        SQLiteCommand nameCompany = new SQLiteCommand("SELECT name FROM shops WHERE id = '" + reader["id_shop"] + "'", ConnectionToDB.DB);
+                        richReport.Text += "Поставка под номером " + reader["id"].ToString() + " в магазин \"" + nameCompany.ExecuteScalar().ToString() + "\"\n";
+                        richReport.Text += "Дата поставки: " + reader["shipment_date"] + "        Сумма поставки: " + reader["shipment_price"] + "   Скидка составила: " + reader["discount"] + "\n";
+
+                        SQLiteCommand products = new SQLiteCommand("SELECT products.id_company, products.characteristic, products.name, product_list_in_shipment.price_product_in_shipment, product_list_in_shipment.count_product_in_shipment FROM " +
+                        "product_list_in_shipment JOIN products ON product_list_in_shipment.id_product = products.id AND product_list_in_shipment.id_shipment = '" + reader["id"] + "'", ConnectionToDB.DB);
+                        SQLiteDataReader readerProd = products.ExecuteReader();
+
+                        richReport.Text += "Продукты в поставке:\n";
+                        while (readerProd.Read())
                         {
-                            richReport.Text += "    Товаров нет\n";
+                            if (readerProd == null)
+                            {
+                                richReport.Text += "    Товаров нет\n";
+                            }
+                            SQLiteCommand command = new SQLiteCommand("SELECT name FROM company WHERE id = '" + readerProd["id_company"].ToString() + "'", ConnectionToDB.DB);
+                            if (listCompany.Contains(Convert.ToInt32(readerProd["id_company"])))
+                            {
+                                richReport.Text += "Наименование: " + readerProd["name"].ToString() + "      Описание: " + readerProd["characteristic"].ToString() + "     Кол-во: " + readerProd["count_product_in_shipment"].ToString() + "     По цене: " + readerProd["price_product_in_shipment"].ToString() + "\nОт фирмы: " + command.ExecuteScalar().ToString() + "\n";
+                            }
+                            else
+                            {
+                                richReport.Text += "Товаров от выбранных фирм нет\n";
+                            }
                         }
-                        SQLiteCommand command = new SQLiteCommand("SELECT name FROM company WHERE id = '" + readerProd["id_company"].ToString() + "'", ConnectionToDB.DB);
-                        if (listCompany.Contains(Convert.ToInt32(readerProd["id_company"])))
-                        {
-                            richReport.Text += "Наименование: " + readerProd["name"].ToString() + "      Описание: " + readerProd["characteristic"].ToString() + "     Кол-во: " + readerProd["count_product_in_shipment"].ToString() + "     По цене: " + readerProd["price_product_in_shipment"].ToString() + "\nОт фирмы: " + command.ExecuteScalar().ToString() + "\n";
-                        }
-                        else
-                        {
-                            richReport.Text += "Товаров от выбранных фирм нет\n";
-                        }
+                        richReport.Text += "\n\n";
                     }
-                    richReport.Text += "\n\n";
                 }
+                    
 
                 ConnectionToDB.closeDB();
                 #endregion

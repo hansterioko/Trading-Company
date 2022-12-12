@@ -60,5 +60,10 @@ namespace Trading_Company
             }
             companyGridView.Columns[0].ReadOnly = false;
         }
+
+        private void companyGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

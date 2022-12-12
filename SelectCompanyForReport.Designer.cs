@@ -50,6 +50,7 @@ namespace Trading_Company
             this.companyGridView.RowHeadersVisible = false;
             this.companyGridView.Size = new System.Drawing.Size(579, 382);
             this.companyGridView.TabIndex = 0;
+            this.companyGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.companyGridView_CellContentClick);
             // 
             // select
             // 
