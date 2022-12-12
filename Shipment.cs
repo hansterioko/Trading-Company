@@ -36,7 +36,9 @@ namespace Trading_Company
 
         private void bShipmentReport_Click(object sender, EventArgs e)
         {
-
+            SelectDateReportShipment selectDateReportShipment = new SelectDateReportShipment();
+            selectDateReportShipment.Show();
+            this.Close();
         }
 
         private void Shipment_Load(object sender, EventArgs e)
@@ -51,8 +53,37 @@ namespace Trading_Company
             dt.Load(reader);
             shipmentGridView.DataSource = dt;
             shipmentGridView.Columns[1].Width = 150;
+            
 
             ConnectionToDB.closeDB();
+        }
+
+        private void shipmentGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (shipmentGridView.CurrentCell != null && e.RowIndex != -1)
+            {
+                DetailShipment detailShipment = new DetailShipment(Convert.ToInt32(shipmentGridView.Rows[e.RowIndex].Cells[0].Value));
+                detailShipment.Show();
+                this.Close();
+            }
+        }
+
+        private void shipmentGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                this.shipmentGridView.Cursor = Cursors.Hand;
+                shipmentGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.AliceBlue;
+            }
+        }
+
+        private void shipmentGridView_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                this.shipmentGridView.Cursor = Cursors.Default;
+                shipmentGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+            }
         }
     }
 }

@@ -44,6 +44,8 @@ namespace Trading_Company
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.photoBox = new System.Windows.Forms.PictureBox();
+            this.nameCompanyBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.photoBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,10 +123,10 @@ namespace Trading_Company
             // 
             // richSummaryBox
             // 
-            this.richSummaryBox.Location = new System.Drawing.Point(12, 168);
+            this.richSummaryBox.Location = new System.Drawing.Point(12, 194);
             this.richSummaryBox.Name = "richSummaryBox";
             this.richSummaryBox.ReadOnly = true;
-            this.richSummaryBox.Size = new System.Drawing.Size(419, 92);
+            this.richSummaryBox.Size = new System.Drawing.Size(421, 92);
             this.richSummaryBox.TabIndex = 9;
             this.richSummaryBox.Text = "";
             // 
@@ -167,7 +169,7 @@ namespace Trading_Company
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 152);
+            this.label7.Location = new System.Drawing.Point(9, 178);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(57, 13);
             this.label7.TabIndex = 14;
@@ -182,11 +184,31 @@ namespace Trading_Company
             this.photoBox.TabIndex = 0;
             this.photoBox.TabStop = false;
             // 
+            // nameCompanyBox
+            // 
+            this.nameCompanyBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.nameCompanyBox.Location = new System.Drawing.Point(164, 154);
+            this.nameCompanyBox.Name = "nameCompanyBox";
+            this.nameCompanyBox.ReadOnly = true;
+            this.nameCompanyBox.Size = new System.Drawing.Size(269, 20);
+            this.nameCompanyBox.TabIndex = 15;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(161, 139);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(122, 13);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Закуплено у компании";
+            // 
             // CurrentProdOnWarehouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 271);
+            this.ClientSize = new System.Drawing.Size(445, 295);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.nameCompanyBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -232,5 +254,7 @@ namespace Trading_Company
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox nameCompanyBox;
+        private System.Windows.Forms.Label label8;
     }
 }

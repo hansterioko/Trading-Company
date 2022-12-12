@@ -135,19 +135,19 @@ namespace Trading_Company
                         SQLiteCommand addToList = new SQLiteCommand("INSERT INTO product_list_in_shipment (id_product, id_shipment, price_product_in_shipment, count_product_in_shipment) VALUES ('" + shipListGridView.Rows[i].Cells[5].Value.ToString() + "', '" + id_shipment + "', '" + shipListGridView.Rows[i].Cells[6].Value.ToString() + "', '" + shipListGridView.Rows[i].Cells[7].Value.ToString() + "')", ConnectionToDB.DB);
                         addToList.ExecuteNonQuery();
 
-                        SQLiteCommand ifCMD = new SQLiteCommand("SELECT count_product FROM warehouse WHERE id_product = '"+ shipListGridView.Rows[i].Cells[5].Value.ToString() + "'", ConnectionToDB.DB);
-                        if (Convert.ToInt32(ifCMD.ExecuteScalar()) == Convert.ToInt32(shipListGridView.Rows[i].Cells[7].Value))
-                        {
-                            SQLiteCommand deleteProd = new SQLiteCommand("DELETE FROM products WHERE id = '"+ shipListGridView.Rows[i].Cells[5].Value.ToString() + "'", ConnectionToDB.DB);
-                            deleteProd.ExecuteNonQuery();
-                            deleteProd = new SQLiteCommand("DELETE FROM warehouse WHERE id_product = '" + shipListGridView.Rows[i].Cells[5].Value.ToString() + "'", ConnectionToDB.DB);
-                            deleteProd.ExecuteNonQuery();
-                        }
-                        else
-                        {
+                        //SQLiteCommand ifCMD = new SQLiteCommand("SELECT count_product FROM warehouse WHERE id_product = '"+ shipListGridView.Rows[i].Cells[5].Value.ToString() + "'", ConnectionToDB.DB);
+                        //if (Convert.ToInt32(ifCMD.ExecuteScalar()) == Convert.ToInt32(shipListGridView.Rows[i].Cells[7].Value))
+                        //{
+                        //    SQLiteCommand deleteProd = new SQLiteCommand("DELETE FROM products WHERE id = '"+ shipListGridView.Rows[i].Cells[5].Value.ToString() + "'", ConnectionToDB.DB);
+                        //    deleteProd.ExecuteNonQuery();
+                        //    deleteProd = new SQLiteCommand("DELETE FROM warehouse WHERE id_product = '" + shipListGridView.Rows[i].Cells[5].Value.ToString() + "'", ConnectionToDB.DB);
+                        //    deleteProd.ExecuteNonQuery();
+                        //}
+                        //else
+                        //{
                             SQLiteCommand changeWarehouse = new SQLiteCommand("UPDATE warehouse SET count_product = count_product - '"+ shipListGridView.Rows[i].Cells[7].Value.ToString() + "' WHERE id_product = '" + shipListGridView.Rows[i].Cells[5].Value.ToString() + "'", ConnectionToDB.DB);
                             changeWarehouse.ExecuteNonQuery();
-                        }
+                        //}
                         SQLiteCommand addDiscount = new SQLiteCommand("UPDATE shipment SET discount = '"+ discountBox.Text +"' WHERE id = (SELECT MAX(id) FROM shipment)", ConnectionToDB.DB);
                         addDiscount.ExecuteNonQuery();
                     }

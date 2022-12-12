@@ -134,6 +134,7 @@ namespace Trading_Company
             this.Name = "SelectDateReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Период закупок";
+            this.Load += new System.EventHandler(this.SelectDateReport_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

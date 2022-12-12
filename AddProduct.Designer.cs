@@ -92,11 +92,12 @@ namespace Trading_Company
             // 
             // richSummaryBox
             // 
-            this.richSummaryBox.Location = new System.Drawing.Point(12, 461);
+            this.richSummaryBox.Location = new System.Drawing.Point(13, 467);
             this.richSummaryBox.Name = "richSummaryBox";
             this.richSummaryBox.Size = new System.Drawing.Size(275, 105);
             this.richSummaryBox.TabIndex = 6;
             this.richSummaryBox.Text = "";
+            this.richSummaryBox.TextChanged += new System.EventHandler(this.richSummaryBox_TextChanged);
             // 
             // label1
             // 
@@ -128,11 +129,12 @@ namespace Trading_Company
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 445);
+            this.label4.Location = new System.Drawing.Point(17, 451);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 13);
             this.label4.TabIndex = 10;
             this.label4.Text = "Описание";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -146,7 +148,7 @@ namespace Trading_Company
             // bAddProductInList
             // 
             this.bAddProductInList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.bAddProductInList.Location = new System.Drawing.Point(13, 572);
+            this.bAddProductInList.Location = new System.Drawing.Point(14, 578);
             this.bAddProductInList.Name = "bAddProductInList";
             this.bAddProductInList.Size = new System.Drawing.Size(276, 31);
             this.bAddProductInList.TabIndex = 12;
@@ -173,7 +175,7 @@ namespace Trading_Company
             // 
             // bCancel
             // 
-            this.bCancel.Location = new System.Drawing.Point(116, 617);
+            this.bCancel.Location = new System.Drawing.Point(117, 623);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(75, 23);
             this.bCancel.TabIndex = 15;

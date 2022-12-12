@@ -60,6 +60,9 @@ namespace Trading_Company
             this.shipmentGridView.RowHeadersVisible = false;
             this.shipmentGridView.Size = new System.Drawing.Size(555, 358);
             this.shipmentGridView.TabIndex = 1;
+            this.shipmentGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.shipmentGridView_CellClick);
+            this.shipmentGridView.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.shipmentGridView_CellMouseEnter);
+            this.shipmentGridView.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.shipmentGridView_CellMouseLeave);
             // 
             // bAddShipment
             // 

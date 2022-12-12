@@ -103,6 +103,12 @@
     <Compile Include="DetailPurchase.Designer.cs">
       <DependentUpon>DetailPurchase.cs</DependentUpon>
     </Compile>
+    <Compile Include="DetailShipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailShipment.Designer.cs">
+      <DependentUpon>DetailShipment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,12 @@
     <Compile Include="SelectDateReport.Designer.cs">
       <DependentUpon>SelectDateReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="SelectDateReportShipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectDateReportShipment.Designer.cs">
+      <DependentUpon>SelectDateReportShipment.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectShop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +195,9 @@
     <EmbeddedResource Include="DetailPurchase.resx">
       <DependentUpon>DetailPurchase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DetailShipment.resx">
+      <DependentUpon>DetailShipment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SelectDateReport.resx">
       <DependentUpon>SelectDateReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectDateReportShipment.resx">
+      <DependentUpon>SelectDateReportShipment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectShop.resx">
       <DependentUpon>SelectShop.cs</DependentUpon>

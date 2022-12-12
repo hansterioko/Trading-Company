@@ -38,11 +38,14 @@ namespace Trading_Company
             ConnectionToDB.openDB();
 
 
-            SQLiteCommand command = new SQLiteCommand("SELECT products.name, products.characteristic, warehouse.count_product, warehouse.sector_on_warehouse, products.vat, products.unit_of_measurement, products.category, products.image  FROM products JOIN warehouse ON products.id = warehouse.id_product WHERE products.id = '" + id_product +"'", ConnectionToDB.DB);
+            SQLiteCommand command = new SQLiteCommand("SELECT products.id_company, products.name, products.characteristic, warehouse.count_product, warehouse.sector_on_warehouse, products.vat, products.unit_of_measurement, products.category, products.image  FROM products JOIN warehouse ON products.id = warehouse.id_product WHERE products.id = '" + id_product +"'", ConnectionToDB.DB);
             SQLiteDataReader reader = command.ExecuteReader();
             
             while (reader.Read())
             {
+                SQLiteCommand nameCompany = new SQLiteCommand("SELECT name FROM company WHERE id = '"+ reader["id_company"] +"'", ConnectionToDB.DB);
+                nameCompanyBox.Text = nameCompany.ExecuteScalar().ToString();
+
                 nameBox.Text = reader["name"].ToString();
                 categoryBox.Text = reader["category"].ToString();
                 vatBox.Text = reader["vat"].ToString();

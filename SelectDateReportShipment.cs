@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Trading_Company
 {
-    public partial class SelectDateReport : Form
+    public partial class SelectDateReportShipment : Form
     {
-        public SelectDateReport()
+        public SelectDateReportShipment()
         {
             InitializeComponent();
         }
@@ -27,22 +27,20 @@ namespace Trading_Company
 
 
 
-            Report report = new Report(fromDateTime, byDateTime, false);
+            Report report = new Report(fromDateTime, byDateTime, true);
             report.ShowDialog();
-            //this.Close();
+        }
+
+        private void SelectDateReportShipment_Load(object sender, EventArgs e)
+        {
+            byTimePicker.Value = DateTime.Now;
         }
 
         private void bExit_Click(object sender, EventArgs e)
         {
-            Purchase purchase = new Purchase();
-            purchase.Show();
+            Shipment shipment = new Shipment();
+            shipment.Show();
             this.Close();
-        }
-
-        private void SelectDateReport_Load(object sender, EventArgs e)
-        {
-            fromTimePicker.Value = DateTime.Now;
-            byTimePicker.Value = DateTime.Now;
         }
     }
 }

@@ -45,10 +45,11 @@ namespace Trading_Company
             // 
             // richReport
             // 
+            this.richReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.richReport.Location = new System.Drawing.Point(18, 52);
             this.richReport.Name = "richReport";
             this.richReport.ReadOnly = true;
-            this.richReport.Size = new System.Drawing.Size(588, 386);
+            this.richReport.Size = new System.Drawing.Size(607, 386);
             this.richReport.TabIndex = 1;
             this.richReport.Text = "";
             // 
@@ -56,7 +57,7 @@ namespace Trading_Company
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(625, 450);
+            this.ClientSize = new System.Drawing.Size(645, 450);
             this.Controls.Add(this.richReport);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

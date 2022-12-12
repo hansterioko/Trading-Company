@@ -73,7 +73,7 @@ namespace Trading_Company
                 SQLiteCommand warehouseCMD;
 
                 // Поиск id, где имя, категория и описание сходятся с написанным в форме
-                SQLiteCommand ifCMD = new SQLiteCommand("SELECT id FROM products WHERE id IN (SELECT id FROM products WHERE name = '" + nameBox1.Text + "' AND category = '" + categoryBox2.Text + "' AND characteristic = '" + richSummaryBox.Text + "' AND vat = '" + vatBox4.Text + "' AND unit_of_measurement = '" + unitBox3.Text + "' AND image = @photo)", ConnectionToDB.DB);
+                SQLiteCommand ifCMD = new SQLiteCommand("SELECT id FROM products WHERE id = (SELECT id FROM products WHERE name = '" + nameBox1.Text + "' AND category = '" + categoryBox2.Text + "' AND characteristic = '" + richSummaryBox.Text + "' AND vat = '" + vatBox4.Text + "' AND unit_of_measurement = '" + unitBox3.Text + "' AND image = @photo AND id_company = (SELECT id_company FROM purchase WHERE id = '" + id_purchase + "'))", ConnectionToDB.DB);
                 ifCMD.Parameters.AddWithValue("@photo", photo);
 
                 ifCMD.CommandType = CommandType.Text;
@@ -82,8 +82,8 @@ namespace Trading_Company
                 if (ifCMD.ExecuteScalar() == null)
                 {
                     //  Т.к. не нашло, то создаётся новый товар
-                    command = new SQLiteCommand("INSERT INTO products (name, category, characteristic, unit_of_measurement, vat, image) VALUES ('" + nameBox1.Text + "', '" + categoryBox2.Text + "', " +
-                    "'" + richSummaryBox.Text + "', '" + unitBox3.Text + "', '" + vatBox4.Text + "', @photo)", ConnectionToDB.DB);
+                    command = new SQLiteCommand("INSERT INTO products (name, category, characteristic, unit_of_measurement, vat, image, id_company) VALUES ('" + nameBox1.Text + "', '" + categoryBox2.Text + "', " +
+                    "'" + richSummaryBox.Text + "', '" + unitBox3.Text + "', '" + vatBox4.Text + "', @photo, (SELECT id_company FROM purchase WHERE id = '"+ id_purchase +"'))", ConnectionToDB.DB);
                     command.Parameters.AddWithValue("@photo", photo);
                     command.ExecuteNonQuery();
 
@@ -140,6 +140,16 @@ namespace Trading_Company
             // 8 это Backspace
             if (!Char.IsDigit(number) && number != 8)
                 e.Handled = true;
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richSummaryBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
