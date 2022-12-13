@@ -31,7 +31,7 @@ namespace Trading_Company
             ConnectionToDB.openDB();
 
             
-            SQLiteCommand command = new SQLiteCommand("SELECT products.name AS 'Наименование', products.characteristic AS 'Описание товара', warehouse.count_product AS 'Количество', warehouse.sector_on_warehouse AS 'Сектор', products.id FROM products JOIN warehouse ON products.id = warehouse.id_product", ConnectionToDB.DB);
+            SQLiteCommand command = new SQLiteCommand("SELECT products.name AS 'Наименование', products.characteristic AS 'Описание товара', warehouse.count_product AS 'Количество', warehouse.sector_on_warehouse AS 'Сектор', products.id, company.name AS 'От фирмы' FROM products JOIN warehouse ON products.id = warehouse.id_product JOIN company ON products.id_company = company.id", ConnectionToDB.DB);
             SQLiteDataReader reader = command.ExecuteReader();
             DataTable dt = new DataTable();
             dt.Load(reader);

@@ -161,8 +161,8 @@ namespace Trading_Company
                         delete = new SQLiteCommand("DELETE FROM products WHERE id = '" + id + "'", ConnectionToDB.DB);
                         delete.ExecuteNonQuery();
 
-                        SQLiteCommand create = new SQLiteCommand("INSERT INTO products (name, category, characteristic, unit_of_measurement, vat, image) VALUES ('" + nameBox.Text + "', '" + categoryBox.Text + "', " +
-                        "'" + richSummaryBox.Text + "', '" + unitBox.Text + "', '" + vatBox.Text + "', @photo)", ConnectionToDB.DB);
+                        SQLiteCommand create = new SQLiteCommand("INSERT INTO products (name, category, characteristic, unit_of_measurement, vat, image, id_company) VALUES ('" + nameBox.Text + "', '" + categoryBox.Text + "', " +
+                        "'" + richSummaryBox.Text + "', '" + unitBox.Text + "', '" + vatBox.Text + "', @photo, (SELECT id_company FROM purchase WHERE id = '"+ id_purchase +"'))", ConnectionToDB.DB);
                         create.Parameters.AddWithValue("@photo", photo);
                         create.ExecuteNonQuery();
 
@@ -180,8 +180,8 @@ namespace Trading_Company
                         SQLiteCommand delete = new SQLiteCommand("UPDATE FROM warehouse SET count_product = count_product - '" + count + "'", ConnectionToDB.DB);
                         delete.ExecuteNonQuery();
 
-                        SQLiteCommand create = new SQLiteCommand("INSERT INTO products (name, category, characteristic, unit_of_measurement, vat, image) VALUES ('" + nameBox.Text + "', '" + categoryBox.Text + "', " +
-                            "'" + richSummaryBox.Text + "', '" + unitBox.Text + "', '" + vatBox.Text + "', @photo", ConnectionToDB.DB);
+                        SQLiteCommand create = new SQLiteCommand("INSERT INTO products (name, category, characteristic, unit_of_measurement, vat, image, id_company) VALUES ('" + nameBox.Text + "', '" + categoryBox.Text + "', " +
+                            "'" + richSummaryBox.Text + "', '" + unitBox.Text + "', '" + vatBox.Text + "', @photo, (SELECT id_company FROM purchase WHERE id = '" + id_purchase + "')", ConnectionToDB.DB);
                         create.Parameters.AddWithValue("@photo", photo);
                         create.ExecuteNonQuery();
 

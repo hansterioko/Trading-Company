@@ -36,7 +36,7 @@ namespace Trading_Company
             // 
             // bExitToMenu
             // 
-            this.bExitToMenu.Location = new System.Drawing.Point(345, 391);
+            this.bExitToMenu.Location = new System.Drawing.Point(359, 391);
             this.bExitToMenu.Name = "bExitToMenu";
             this.bExitToMenu.Size = new System.Drawing.Size(160, 30);
             this.bExitToMenu.TabIndex = 2;
@@ -56,7 +56,7 @@ namespace Trading_Company
             this.warehouseGridView.Name = "warehouseGridView";
             this.warehouseGridView.ReadOnly = true;
             this.warehouseGridView.RowHeadersVisible = false;
-            this.warehouseGridView.Size = new System.Drawing.Size(492, 359);
+            this.warehouseGridView.Size = new System.Drawing.Size(506, 359);
             this.warehouseGridView.TabIndex = 3;
             this.warehouseGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.warehouseGridView_CellClick);
             this.warehouseGridView.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.warehouseGridView_CellMouseEnter);
@@ -66,7 +66,7 @@ namespace Trading_Company
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(522, 433);
+            this.ClientSize = new System.Drawing.Size(535, 433);
             this.ControlBox = false;
             this.Controls.Add(this.warehouseGridView);
             this.Controls.Add(this.bExitToMenu);
