@@ -33,6 +33,7 @@ namespace Trading_Company
             this.richReport = new System.Windows.Forms.RichTextBox();
             this.bSelectCompany = new System.Windows.Forms.Button();
             this.bSelectShop = new System.Windows.Forms.Button();
+            this.bSaveFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -77,11 +78,23 @@ namespace Trading_Company
             this.bSelectShop.UseVisualStyleBackColor = true;
             this.bSelectShop.Click += new System.EventHandler(this.bSelectShop_Click);
             // 
+            // bSaveFile
+            // 
+            this.bSaveFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.bSaveFile.Location = new System.Drawing.Point(253, 444);
+            this.bSaveFile.Name = "bSaveFile";
+            this.bSaveFile.Size = new System.Drawing.Size(135, 33);
+            this.bSaveFile.TabIndex = 4;
+            this.bSaveFile.Text = "Сохранить";
+            this.bSaveFile.UseVisualStyleBackColor = true;
+            this.bSaveFile.Click += new System.EventHandler(this.bSaveFile_Click);
+            // 
             // Report
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(645, 483);
+            this.Controls.Add(this.bSaveFile);
             this.Controls.Add(this.bSelectShop);
             this.Controls.Add(this.bSelectCompany);
             this.Controls.Add(this.richReport);
@@ -104,5 +117,6 @@ namespace Trading_Company
         private System.Windows.Forms.RichTextBox richReport;
         private System.Windows.Forms.Button bSelectCompany;
         private System.Windows.Forms.Button bSelectShop;
+        private System.Windows.Forms.Button bSaveFile;
     }
 }

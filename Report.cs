@@ -74,6 +74,18 @@ namespace Trading_Company
             }
         }
 
+        private void bSaveFile_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFile1 = new SaveFileDialog();
+            saveFile1.DefaultExt = "*.rtf | *.txt";
+            saveFile1.Filter = "RTF Files|*.rtf |TXT Files|*.txt";
+            if (saveFile1.ShowDialog() == System.Windows.Forms.DialogResult.OK &&
+               saveFile1.FileName.Length > 0)
+            {
+                richReport.SaveFile(saveFile1.FileName);
+            }
+        }
+
         private void Report_Load(object sender, EventArgs e)
         {
            // MessageBox.Show("ЗАПУСК");

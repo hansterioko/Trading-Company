@@ -43,8 +43,6 @@ namespace Trading_Company
 
                 photo = GetPhoto(filePath);
             }
-            
-
         }
 
         public static byte[] GetPhoto(string filePath)      // Из изображения в байты

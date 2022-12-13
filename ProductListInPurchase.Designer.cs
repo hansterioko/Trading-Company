@@ -101,7 +101,7 @@ namespace Trading_Company
             this.MinimizeBox = false;
             this.Name = "ProductListInPurchase";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ProductListInPurchase";
+            this.Text = "Список товаров в закупке";
             this.Load += new System.EventHandler(this.ProductListInPurchase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

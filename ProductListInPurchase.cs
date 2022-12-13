@@ -145,6 +145,7 @@ namespace Trading_Company
             if (ifCMD.ExecuteScalar() == null)
             {
                 MessageBox.Show("Лист закупки пуст!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ConnectionToDB.closeDB();
             }
             else
             {
@@ -197,7 +198,7 @@ namespace Trading_Company
                 //    "product_list_in_purchase.id_product = products.id AND " +
                 //    "products.name = '" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "' WHERE product_list_in_purchase.id_purchase = '" + id_purchase + "' AND product_list_in_purchase.id_product = '" + dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", ConnectionToDB.DB);
                 int id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
-                ConnectionToDB.closeDB();
+                //ConnectionToDB.closeDB();
 
                 int count = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[3].Value);
 
