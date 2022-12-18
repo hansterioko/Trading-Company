@@ -47,6 +47,7 @@ namespace Trading_Company
             this.priceBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.picturePhoto = new System.Windows.Forms.PictureBox();
+            this.bAddHaveProduct = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picturePhoto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,6 +60,7 @@ namespace Trading_Company
             // 
             // bAddPhoto
             // 
+            this.bAddPhoto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bAddPhoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.bAddPhoto.Location = new System.Drawing.Point(207, 13);
             this.bAddPhoto.Name = "bAddPhoto";
@@ -147,12 +149,13 @@ namespace Trading_Company
             // 
             // bAddProductInList
             // 
+            this.bAddProductInList.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bAddProductInList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.bAddProductInList.Location = new System.Drawing.Point(14, 578);
+            this.bAddProductInList.Location = new System.Drawing.Point(12, 615);
             this.bAddProductInList.Name = "bAddProductInList";
-            this.bAddProductInList.Size = new System.Drawing.Size(276, 31);
+            this.bAddProductInList.Size = new System.Drawing.Size(140, 31);
             this.bAddProductInList.TabIndex = 12;
-            this.bAddProductInList.Text = "Добавить товар в список";
+            this.bAddProductInList.Text = "Добавить новый";
             this.bAddProductInList.UseVisualStyleBackColor = true;
             this.bAddProductInList.Click += new System.EventHandler(this.bAddProductInList_Click);
             // 
@@ -175,9 +178,10 @@ namespace Trading_Company
             // 
             // bCancel
             // 
-            this.bCancel.Location = new System.Drawing.Point(117, 623);
+            this.bCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bCancel.Location = new System.Drawing.Point(213, 615);
             this.bCancel.Name = "bCancel";
-            this.bCancel.Size = new System.Drawing.Size(75, 23);
+            this.bCancel.Size = new System.Drawing.Size(75, 31);
             this.bCancel.TabIndex = 15;
             this.bCancel.Text = "Отмена";
             this.bCancel.UseVisualStyleBackColor = true;
@@ -209,12 +213,27 @@ namespace Trading_Company
             this.picturePhoto.TabIndex = 0;
             this.picturePhoto.TabStop = false;
             // 
+            // bAddHaveProduct
+            // 
+            this.bAddHaveProduct.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.bAddHaveProduct.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bAddHaveProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.bAddHaveProduct.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.bAddHaveProduct.Location = new System.Drawing.Point(12, 578);
+            this.bAddHaveProduct.Name = "bAddHaveProduct";
+            this.bAddHaveProduct.Size = new System.Drawing.Size(276, 27);
+            this.bAddHaveProduct.TabIndex = 18;
+            this.bAddHaveProduct.Text = "Добавить товар из списка";
+            this.bAddHaveProduct.UseVisualStyleBackColor = false;
+            this.bAddHaveProduct.Click += new System.EventHandler(this.bAddHaveProduct_Click);
+            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(295, 654);
             this.ControlBox = false;
+            this.Controls.Add(this.bAddHaveProduct);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.priceBox);
             this.Controls.Add(this.bCancel);
@@ -264,5 +283,6 @@ namespace Trading_Company
         private System.Windows.Forms.Button bCancel;
         private System.Windows.Forms.TextBox priceBox;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button bAddHaveProduct;
     }
 }

@@ -48,7 +48,6 @@ namespace Trading_Company
             // 
             this.warehouseGridView.AllowUserToAddRows = false;
             this.warehouseGridView.AllowUserToDeleteRows = false;
-            this.warehouseGridView.AllowUserToOrderColumns = true;
             this.warehouseGridView.AllowUserToResizeColumns = false;
             this.warehouseGridView.AllowUserToResizeRows = false;
             this.warehouseGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

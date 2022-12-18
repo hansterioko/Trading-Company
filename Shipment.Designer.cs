@@ -50,7 +50,6 @@ namespace Trading_Company
             // 
             this.shipmentGridView.AllowUserToAddRows = false;
             this.shipmentGridView.AllowUserToDeleteRows = false;
-            this.shipmentGridView.AllowUserToOrderColumns = true;
             this.shipmentGridView.AllowUserToResizeColumns = false;
             this.shipmentGridView.AllowUserToResizeRows = false;
             this.shipmentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

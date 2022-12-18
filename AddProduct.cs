@@ -149,5 +149,12 @@ namespace Trading_Company
         {
 
         }
+
+        private void bAddHaveProduct_Click(object sender, EventArgs e)
+        {
+            SelectProductInPurchase selectProductInPurchase = new SelectProductInPurchase(id_purchase);
+            selectProductInPurchase.Show();
+            this.Close();
+        }
     }
 }

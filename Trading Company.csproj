@@ -165,6 +165,12 @@
     <Compile Include="SelectDateReportShipment.Designer.cs">
       <DependentUpon>SelectDateReportShipment.cs</DependentUpon>
     </Compile>
+    <Compile Include="SelectProductInPurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectProductInPurchase.Designer.cs">
+      <DependentUpon>SelectProductInPurchase.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectShop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SelectDateReportShipment.resx">
       <DependentUpon>SelectDateReportShipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectProductInPurchase.resx">
+      <DependentUpon>SelectProductInPurchase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectShop.resx">
       <DependentUpon>SelectShop.cs</DependentUpon>
