@@ -88,6 +88,8 @@ namespace Trading_Company
                     productsGridView.Rows[e.RowIndex].Cells[6].Style.BackColor = Color.DimGray;
                 }
             }
+
+
         }
 
         private void productsGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
@@ -134,6 +136,19 @@ namespace Trading_Company
             }
             if (!isNull)
             {
+                for (int i = 0; i < productsGridView.Rows.Count; i++)
+                {
+                    if (productsGridView.Rows[i].Cells[0].Value != null && productsGridView.Rows[i].Cells[0].Value.ToString().Equals("True"))
+                    {
+                        ConnectionToDB.openDB();
+
+                        SQLiteCommand updWarehouse = new SQLiteCommand("UPDATE warehouse SET count_product = count_product + '" + Convert.ToInt32(productsGridView.Rows[i].Cells[6].Value) + "' WHERE id_product = '" + Convert.ToInt32(productsGridView.Rows[i].Cells[1].Value) + "'", ConnectionToDB.DB);
+                        updWarehouse.ExecuteNonQuery();
+
+                        ConnectionToDB.closeDB();
+                    }
+                }
+
                 ProductListInPurchase productListInPurchase = new ProductListInPurchase(products);
                 productListInPurchase.Show();
                 this.Close();
@@ -144,7 +159,61 @@ namespace Trading_Company
                 MessageBox.Show("Заполните поля цены и количества у товаров:" + namerOfRow.TrimEnd(','), "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void productsGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (productsGridView.CurrentCell != null && productsGridView.CurrentCell.ColumnIndex == 2 && e.RowIndex != -1)
+            {
+
+                int id_product = Convert.ToInt32(productsGridView.Rows[e.RowIndex].Cells[1].Value);
+
+                CurrentProdOnWarehouse currentProdOnWarehouse = new CurrentProdOnWarehouse(id_product);
+                currentProdOnWarehouse.ShowDialog();
+            }
+        }
+
+        private void productsGridView_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void productsGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private DataGridViewTextBoxEditingControl currentEditingControl;
+        private void productsGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (currentEditingControl == null && e.Control is DataGridViewTextBoxEditingControl tb)
+            {
+                currentEditingControl = tb;
+                currentEditingControl.KeyPress += EditingControl_KeyPress;
+            }
+        }
+
+        private void EditingControl_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (sender is DataGridViewTextBoxEditingControl tb)
+            {
+                char number = e.KeyChar;
+
+                // Если пользователь ввёл не цифру,запятую и не нажал на Backspace, то не отображаем символ в textbox
+                // 8 это Backspace
+                if (!Char.IsDigit(number) && number != 8)
+                    e.Handled = true;
+            }
+        }
+
+        private void bExit_Click(object sender, EventArgs e)
+        {
+            AddProduct addProduct = new AddProduct(id_purchase);
+            addProduct.Show();
+            this.Close();
+        }
     }
+
+
 
     public class Product
     {
