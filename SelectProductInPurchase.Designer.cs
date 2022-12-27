@@ -100,7 +100,7 @@ namespace Trading_Company
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "SelectProductInPurchase";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SelectProductInPurchase";
+            this.Text = " Выбор продуктов из прошлых поставок";
             this.Load += new System.EventHandler(this.SelectProductInPurchase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.productsGridView)).EndInit();
             this.ResumeLayout(false);

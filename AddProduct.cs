@@ -63,55 +63,62 @@ namespace Trading_Company
 
         private void bAddProductInList_Click(object sender, EventArgs e)
         {
-
-            if (nameBox1.Text != "" && categoryBox2.Text != "" && unitBox3.Text != "" && vatBox4.Text != "" && countBox1.Text != "" && priceBox.Text != "" && richSummaryBox.Text != "")
+            try
             {
-                ConnectionToDB.openDB();
-
-                SQLiteCommand command;
-                SQLiteCommand warehouseCMD;
-
-                // Поиск id, где имя, категория и описание сходятся с написанным в форме
-                SQLiteCommand ifCMD = new SQLiteCommand("SELECT id FROM products WHERE id = (SELECT id FROM products WHERE name = '" + nameBox1.Text + "' AND category = '" + categoryBox2.Text + "' AND characteristic = '" + richSummaryBox.Text + "' AND vat = '" + vatBox4.Text + "' AND unit_of_measurement = '" + unitBox3.Text + "' AND image = @photo AND id_company = (SELECT id_company FROM purchase WHERE id = '" + id_purchase + "'))", ConnectionToDB.DB);
-                ifCMD.Parameters.AddWithValue("@photo", photo);
-
-                ifCMD.CommandType = CommandType.Text;
-
-                // Если всё-таки нашло схожее, то false
-                if (ifCMD.ExecuteScalar() == null)
+                if (nameBox1.Text != "" && categoryBox2.Text != "" && unitBox3.Text != "" && vatBox4.Text != "" && countBox1.Text != "" && priceBox.Text != "" && richSummaryBox.Text != "")
                 {
-                    //  Т.к. не нашло, то создаётся новый товар
-                    command = new SQLiteCommand("INSERT INTO products (name, category, characteristic, unit_of_measurement, vat, image, id_company) VALUES ('" + nameBox1.Text + "', '" + categoryBox2.Text + "', " +
-                    "'" + richSummaryBox.Text + "', '" + unitBox3.Text + "', '" + vatBox4.Text + "', @photo, (SELECT id_company FROM purchase WHERE id = '"+ id_purchase +"'))", ConnectionToDB.DB);
-                    command.Parameters.AddWithValue("@photo", photo);
-                    command.ExecuteNonQuery();
+                    ConnectionToDB.openDB();
 
-                    // Запись о товаре на склад
-                    warehouseCMD = new SQLiteCommand("INSERT INTO warehouse (id_product, count_product, sector_on_warehouse) VALUES ('" + ifCMD.ExecuteScalar().ToString() + "', '" + Convert.ToInt32(countBox1.Text) + "', '" + ifCMD.ExecuteScalar().ToString() + nameBox1.Text[0] + "')", ConnectionToDB.DB);
-                    warehouseCMD.ExecuteNonQuery();
+                    SQLiteCommand command;
+                    SQLiteCommand warehouseCMD;
+
+                    // Поиск id, где имя, категория и описание сходятся с написанным в форме
+                    SQLiteCommand ifCMD = new SQLiteCommand("SELECT id FROM products WHERE id = (SELECT id FROM products WHERE name = '" + nameBox1.Text + "' AND category = '" + categoryBox2.Text + "' AND characteristic = '" + richSummaryBox.Text + "' AND vat = '" + vatBox4.Text + "' AND unit_of_measurement = '" + unitBox3.Text + "' AND image = @photo AND id_company = (SELECT id_company FROM purchase WHERE id = '" + id_purchase + "'))", ConnectionToDB.DB);
+                    ifCMD.Parameters.AddWithValue("@photo", photo);
+
+                    ifCMD.CommandType = CommandType.Text;
+
+                    // Если всё-таки нашло схожее, то false
+                    if (ifCMD.ExecuteScalar() == null)
+                    {
+                        //  Т.к. не нашло, то создаётся новый товар
+                        command = new SQLiteCommand("INSERT INTO products (name, category, characteristic, unit_of_measurement, vat, image, id_company) VALUES ('" + nameBox1.Text + "', '" + categoryBox2.Text + "', " +
+                        "'" + richSummaryBox.Text + "', '" + unitBox3.Text + "', '" + vatBox4.Text + "', @photo, (SELECT id_company FROM purchase WHERE id = '" + id_purchase + "'))", ConnectionToDB.DB);
+                        command.Parameters.AddWithValue("@photo", photo);
+                        command.ExecuteNonQuery();
+
+                        // Запись о товаре на склад
+                        warehouseCMD = new SQLiteCommand("INSERT INTO warehouse (id_product, count_product, sector_on_warehouse) VALUES ('" + ifCMD.ExecuteScalar().ToString() + "', '" + Convert.ToInt32(countBox1.Text) + "', '" + ifCMD.ExecuteScalar().ToString() + nameBox1.Text[0] + "')", ConnectionToDB.DB);
+                        warehouseCMD.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        // Т.к. такой товар уже создан, то его НДС обновляется и ...
+                        //command = new SQLiteCommand("UPDATE products SET vat = '" + vatBox4.Text + "' WHERE id = '" + ifCMD.ExecuteScalar().ToString() + "'", ConnectionToDB.DB);
+                        //command.ExecuteNonQuery();
+
+                        // И добавляется количество на складе
+                        warehouseCMD = new SQLiteCommand("UPDATE warehouse SET count_product = count_product + '" + Convert.ToInt32(countBox1.Text) + "' WHERE id_product = '" + ifCMD.ExecuteScalar().ToString() + "'", ConnectionToDB.DB);
+                        warehouseCMD.ExecuteNonQuery();
+                    }
+
+                    int id_prod = Convert.ToInt32(ifCMD.ExecuteScalar());
+                    ConnectionToDB.closeDB();
+                    ProductListInPurchase productListInPurchase = new ProductListInPurchase(Convert.ToInt32(priceBox.Text), Convert.ToInt32(countBox1.Text), id_prod, id_purchase);
+
+                    productListInPurchase.Show();
+                    this.Close();
                 }
                 else
                 {
-                    // Т.к. такой товар уже создан, то его НДС обновляется и ...
-                    //command = new SQLiteCommand("UPDATE products SET vat = '" + vatBox4.Text + "' WHERE id = '" + ifCMD.ExecuteScalar().ToString() + "'", ConnectionToDB.DB);
-                    //command.ExecuteNonQuery();
-
-                    // И добавляется количество на складе
-                    warehouseCMD = new SQLiteCommand("UPDATE warehouse SET count_product = count_product + '" + Convert.ToInt32(countBox1.Text) + "' WHERE id_product = '" + ifCMD.ExecuteScalar().ToString() + "'", ConnectionToDB.DB);
-                    warehouseCMD.ExecuteNonQuery();
+                    MessageBox.Show("Все поля должны быть заполнены", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-                int id_prod = Convert.ToInt32(ifCMD.ExecuteScalar());
-                ConnectionToDB.closeDB();
-                ProductListInPurchase productListInPurchase = new ProductListInPurchase(Convert.ToInt32(priceBox.Text), Convert.ToInt32(countBox1.Text), id_prod, id_purchase);
-                
-                productListInPurchase.Show();
-                this.Close();
             }
-            else
+            catch
             {
-                MessageBox.Show("Все поля должны быть заполнены", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ошибка добавления данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+           
         }
 
         private void countBox_KeyPress(object sender, KeyPressEventArgs e)

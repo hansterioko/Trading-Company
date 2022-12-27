@@ -81,8 +81,9 @@ namespace Trading_Company
         private void bSaveFile_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFile1 = new SaveFileDialog();
-            saveFile1.DefaultExt = "*.rtf | *.txt";
-            saveFile1.Filter = "RTF Files|*.rtf |TXT Files|*.txt";
+            saveFile1.Filter = "*.rtf";
+            saveFile1.DefaultExt = "*.rtf";
+            saveFile1.Filter = "RTF Files|*.rtf";
             if (saveFile1.ShowDialog() == System.Windows.Forms.DialogResult.OK &&
                saveFile1.FileName.Length > 0)
             {

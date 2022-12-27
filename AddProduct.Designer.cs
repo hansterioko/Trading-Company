@@ -54,6 +54,7 @@ namespace Trading_Company
             // nameBox1
             // 
             this.nameBox1.Location = new System.Drawing.Point(12, 188);
+            this.nameBox1.MaxLength = 120;
             this.nameBox1.Name = "nameBox1";
             this.nameBox1.Size = new System.Drawing.Size(276, 20);
             this.nameBox1.TabIndex = 1;
@@ -73,6 +74,7 @@ namespace Trading_Company
             // categoryBox2
             // 
             this.categoryBox2.Location = new System.Drawing.Point(13, 231);
+            this.categoryBox2.MaxLength = 20;
             this.categoryBox2.Name = "categoryBox2";
             this.categoryBox2.Size = new System.Drawing.Size(276, 20);
             this.categoryBox2.TabIndex = 3;
@@ -80,6 +82,7 @@ namespace Trading_Company
             // unitBox3
             // 
             this.unitBox3.Location = new System.Drawing.Point(12, 278);
+            this.unitBox3.MaxLength = 15;
             this.unitBox3.Name = "unitBox3";
             this.unitBox3.Size = new System.Drawing.Size(276, 20);
             this.unitBox3.TabIndex = 4;
@@ -87,6 +90,7 @@ namespace Trading_Company
             // vatBox4
             // 
             this.vatBox4.Location = new System.Drawing.Point(12, 321);
+            this.vatBox4.MaxLength = 10;
             this.vatBox4.Name = "vatBox4";
             this.vatBox4.Size = new System.Drawing.Size(277, 20);
             this.vatBox4.TabIndex = 5;
@@ -162,6 +166,7 @@ namespace Trading_Company
             // countBox1
             // 
             this.countBox1.Location = new System.Drawing.Point(12, 360);
+            this.countBox1.MaxLength = 10;
             this.countBox1.Name = "countBox1";
             this.countBox1.Size = new System.Drawing.Size(277, 20);
             this.countBox1.TabIndex = 13;
@@ -190,6 +195,7 @@ namespace Trading_Company
             // priceBox
             // 
             this.priceBox.Location = new System.Drawing.Point(12, 397);
+            this.priceBox.MaxLength = 10;
             this.priceBox.Name = "priceBox";
             this.priceBox.Size = new System.Drawing.Size(277, 20);
             this.priceBox.TabIndex = 16;

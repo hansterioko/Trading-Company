@@ -183,12 +183,37 @@ namespace Trading_Company
             }
         }
 
+
+        private DataGridViewTextBoxEditingControl currentEditingControl;
         private void shipListGridView_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 1 && e.RowIndex > -1)
             {
                 this.shipListGridView.Cursor = Cursors.Default;
                 shipListGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.White;
+            }
+        }
+
+
+        private void EditingControl_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (sender is DataGridViewTextBoxEditingControl tb)
+            {
+                char number = e.KeyChar;
+
+                // Если пользователь ввёл не цифру,запятую и не нажал на Backspace, то не отображаем символ в textbox
+                // 8 это Backspace
+                if (!Char.IsDigit(number) && number != 8)
+                    e.Handled = true;
+            }
+        }
+
+        private void shipListGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (currentEditingControl == null && e.Control is DataGridViewTextBoxEditingControl tb)
+            {
+                currentEditingControl = tb;
+                currentEditingControl.KeyPress += EditingControl_KeyPress;
             }
         }
     }

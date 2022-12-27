@@ -22,26 +22,33 @@ namespace Trading_Company
 
         private void SelectProductInPurchase_Load(object sender, EventArgs e)
         {
-            ConnectionToDB.openDB();
+            try
+            {
+                ConnectionToDB.openDB();
 
-            SQLiteCommand command = new SQLiteCommand("SELECT id, name AS 'Наименование', category AS 'Категория', characteristic AS 'Описание' FROM products WHERE id_company = (SELECT id_company FROM purchase WHERE id = '"+ id_purchase +"')", ConnectionToDB.DB);
-            SQLiteDataReader reader = command.ExecuteReader();
+                SQLiteCommand command = new SQLiteCommand("SELECT id, name AS 'Наименование', category AS 'Категория', characteristic AS 'Описание' FROM products WHERE id_company = (SELECT id_company FROM purchase WHERE id = '" + id_purchase + "')", ConnectionToDB.DB);
+                SQLiteDataReader reader = command.ExecuteReader();
 
-            DataTable dt = new DataTable();
-            dt.Load(reader);
+                DataTable dt = new DataTable();
+                dt.Load(reader);
 
-            productsGridView.DataSource = dt;
-            productsGridView.Columns[1].Visible = false;
-            productsGridView.Columns[4].Width = 200;
-            productsGridView.Columns.Add("cost", "Цена закупки");
-            productsGridView.Columns.Add("cost", "Колличество");
+                productsGridView.DataSource = dt;
+                productsGridView.Columns[1].Visible = false;
+                productsGridView.Columns[4].Width = 200;
+                productsGridView.Columns.Add("cost", "Цена закупки");
+                productsGridView.Columns.Add("cost", "Колличество");
 
-            productsGridView.Columns[5].DefaultCellStyle.BackColor = Color.DimGray;
-            productsGridView.Columns[6].DefaultCellStyle.BackColor = Color.DimGray;
+                productsGridView.Columns[5].DefaultCellStyle.BackColor = Color.DimGray;
+                productsGridView.Columns[6].DefaultCellStyle.BackColor = Color.DimGray;
 
-            setReadOnly();
+                setReadOnly();
 
-            ConnectionToDB.closeDB();
+                ConnectionToDB.closeDB();
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка добавления данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void setReadOnly()
@@ -112,51 +119,58 @@ namespace Trading_Company
 
         private void bAdding_Click(object sender, EventArgs e)
         {
-            Boolean isNull = false;
-            String namerOfRow = "";
-
-            List<Product> products = new List<Product>();
-            
-
-            for (int i = 0; i < productsGridView.Rows.Count; i++)
+            try
             {
-                if (productsGridView.Rows[i].Cells[0].Value != null && productsGridView.Rows[i].Cells[0].Value.ToString().Equals("True"))
-                {
-                    if (productsGridView.Rows[i].Cells[5].Value == null || productsGridView.Rows[i].Cells[6].Value == null)
-                    {
-                        isNull = true;
-                        namerOfRow += " " + productsGridView.Rows[i].Cells[2].Value.ToString() + ",";
-                    }
-                    else
-                    {
-                        Product product = new Product(Convert.ToInt32(productsGridView.Rows[i].Cells[5].Value), Convert.ToInt32(productsGridView.Rows[i].Cells[6].Value), Convert.ToInt32(productsGridView.Rows[i].Cells[1].Value), id_purchase); // параметры товара
-                        products.Add(product);
-                    }
-                }        
-            }
-            if (!isNull)
-            {
+                Boolean isNull = false;
+                String namerOfRow = "";
+
+                List<Product> products = new List<Product>();
+
+
                 for (int i = 0; i < productsGridView.Rows.Count; i++)
                 {
                     if (productsGridView.Rows[i].Cells[0].Value != null && productsGridView.Rows[i].Cells[0].Value.ToString().Equals("True"))
                     {
-                        ConnectionToDB.openDB();
-
-                        SQLiteCommand updWarehouse = new SQLiteCommand("UPDATE warehouse SET count_product = count_product + '" + Convert.ToInt32(productsGridView.Rows[i].Cells[6].Value) + "' WHERE id_product = '" + Convert.ToInt32(productsGridView.Rows[i].Cells[1].Value) + "'", ConnectionToDB.DB);
-                        updWarehouse.ExecuteNonQuery();
-
-                        ConnectionToDB.closeDB();
+                        if (productsGridView.Rows[i].Cells[5].Value == null || productsGridView.Rows[i].Cells[6].Value == null)
+                        {
+                            isNull = true;
+                            namerOfRow += " " + productsGridView.Rows[i].Cells[2].Value.ToString() + ",";
+                        }
+                        else
+                        {
+                            Product product = new Product(Convert.ToInt32(productsGridView.Rows[i].Cells[5].Value), Convert.ToInt32(productsGridView.Rows[i].Cells[6].Value), Convert.ToInt32(productsGridView.Rows[i].Cells[1].Value), id_purchase); // параметры товара
+                            products.Add(product);
+                        }
                     }
                 }
+                if (!isNull)
+                {
+                    for (int i = 0; i < productsGridView.Rows.Count; i++)
+                    {
+                        if (productsGridView.Rows[i].Cells[0].Value != null && productsGridView.Rows[i].Cells[0].Value.ToString().Equals("True"))
+                        {
+                            ConnectionToDB.openDB();
 
-                ProductListInPurchase productListInPurchase = new ProductListInPurchase(products);
-                productListInPurchase.Show();
-                this.Close();
+                            SQLiteCommand updWarehouse = new SQLiteCommand("UPDATE warehouse SET count_product = count_product + '" + Convert.ToInt32(productsGridView.Rows[i].Cells[6].Value) + "' WHERE id_product = '" + Convert.ToInt32(productsGridView.Rows[i].Cells[1].Value) + "'", ConnectionToDB.DB);
+                            updWarehouse.ExecuteNonQuery();
+
+                            ConnectionToDB.closeDB();
+                        }
+                    }
+
+                    ProductListInPurchase productListInPurchase = new ProductListInPurchase(products);
+                    productListInPurchase.Show();
+                    this.Close();
+                }
+                else
+                {
+
+                    MessageBox.Show("Заполните поля цены и количества у товаров:" + namerOfRow.TrimEnd(','), "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            else
+            catch
             {
-                
-                MessageBox.Show("Заполните поля цены и количества у товаров:" + namerOfRow.TrimEnd(','), "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ошибка добавления данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

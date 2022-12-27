@@ -104,6 +104,7 @@ namespace Trading_Company
             // houseBox
             // 
             this.houseBox.Location = new System.Drawing.Point(12, 243);
+            this.houseBox.MaxLength = 5;
             this.houseBox.Name = "houseBox";
             this.houseBox.Size = new System.Drawing.Size(149, 20);
             this.houseBox.TabIndex = 23;
@@ -111,6 +112,7 @@ namespace Trading_Company
             // streetBox
             // 
             this.streetBox.Location = new System.Drawing.Point(12, 201);
+            this.streetBox.MaxLength = 60;
             this.streetBox.Name = "streetBox";
             this.streetBox.Size = new System.Drawing.Size(149, 20);
             this.streetBox.TabIndex = 22;
@@ -118,6 +120,7 @@ namespace Trading_Company
             // cityBox
             // 
             this.cityBox.Location = new System.Drawing.Point(12, 158);
+            this.cityBox.MaxLength = 60;
             this.cityBox.Name = "cityBox";
             this.cityBox.Size = new System.Drawing.Size(149, 20);
             this.cityBox.TabIndex = 21;
@@ -125,6 +128,7 @@ namespace Trading_Company
             // telNumbBox
             // 
             this.telNumbBox.Location = new System.Drawing.Point(11, 113);
+            this.telNumbBox.MaxLength = 12;
             this.telNumbBox.Name = "telNumbBox";
             this.telNumbBox.Size = new System.Drawing.Size(149, 20);
             this.telNumbBox.TabIndex = 20;

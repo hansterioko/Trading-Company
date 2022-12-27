@@ -59,6 +59,7 @@ namespace Trading_Company
             this.shipListGridView.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.shipListGridView_CellMouseEnter);
             this.shipListGridView.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.shipListGridView_CellMouseLeave);
             this.shipListGridView.CellStateChanged += new System.Windows.Forms.DataGridViewCellStateChangedEventHandler(this.shipListGridView_CellStateChanged);
+            this.shipListGridView.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.shipListGridView_EditingControlShowing);
             // 
             // selected
             // 

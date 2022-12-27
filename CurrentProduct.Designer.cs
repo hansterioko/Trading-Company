@@ -53,6 +53,7 @@ namespace Trading_Company
             // nameBox
             // 
             this.nameBox.Location = new System.Drawing.Point(178, 25);
+            this.nameBox.MaxLength = 120;
             this.nameBox.Name = "nameBox";
             this.nameBox.ReadOnly = true;
             this.nameBox.Size = new System.Drawing.Size(148, 20);
@@ -61,6 +62,7 @@ namespace Trading_Company
             // categoryBox
             // 
             this.categoryBox.Location = new System.Drawing.Point(178, 62);
+            this.categoryBox.MaxLength = 20;
             this.categoryBox.Name = "categoryBox";
             this.categoryBox.ReadOnly = true;
             this.categoryBox.Size = new System.Drawing.Size(148, 20);
@@ -78,6 +80,7 @@ namespace Trading_Company
             // priceBox
             // 
             this.priceBox.Location = new System.Drawing.Point(178, 102);
+            this.priceBox.MaxLength = 10;
             this.priceBox.Name = "priceBox";
             this.priceBox.ReadOnly = true;
             this.priceBox.Size = new System.Drawing.Size(148, 20);
@@ -87,6 +90,7 @@ namespace Trading_Company
             // countBox
             // 
             this.countBox.Location = new System.Drawing.Point(178, 140);
+            this.countBox.MaxLength = 10;
             this.countBox.Name = "countBox";
             this.countBox.ReadOnly = true;
             this.countBox.Size = new System.Drawing.Size(148, 20);
@@ -186,6 +190,7 @@ namespace Trading_Company
             // unitBox
             // 
             this.unitBox.Location = new System.Drawing.Point(21, 178);
+            this.unitBox.MaxLength = 15;
             this.unitBox.Name = "unitBox";
             this.unitBox.ReadOnly = true;
             this.unitBox.Size = new System.Drawing.Size(148, 20);
@@ -194,6 +199,7 @@ namespace Trading_Company
             // vatBox
             // 
             this.vatBox.Location = new System.Drawing.Point(178, 178);
+            this.vatBox.MaxLength = 10;
             this.vatBox.Name = "vatBox";
             this.vatBox.ReadOnly = true;
             this.vatBox.Size = new System.Drawing.Size(148, 20);
