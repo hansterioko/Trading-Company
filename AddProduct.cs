@@ -33,8 +33,9 @@ namespace Trading_Company
 
         private void bAddPhoto_Click(object sender, EventArgs e)
         {
-            var filePath = string.Empty;
+            string filePath;
             OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Изображение. Файл формата  *.png|*.jpg|*.jpeg|*.bmp";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 //Get the path of specified file

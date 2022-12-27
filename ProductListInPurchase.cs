@@ -43,16 +43,16 @@ namespace Trading_Company
                         }
                         else
                         {
-                            SQLiteCommand addProdList = new SQLiteCommand("INSERT INTO product_list_in_purchase (id_product, id_purchase, price_product_in_purchase, count_product_in_purchase)" +
-                    " VALUES ('" + id_product + "', '" + id_purchase + "', '" + price_product + "', '" + count_product + "')", ConnectionToDB.DB);
+                            SQLiteCommand addProdList = new SQLiteCommand("INSERT INTO product_list_in_purchase (id_product, id_purchase, price_product_in_purchase, count_product_in_purchase, isnewproduct)" +
+                    " VALUES ('" + id_product + "', '" + id_purchase + "', '" + price_product + "', '" + count_product + "', 'false')", ConnectionToDB.DB);
                             addProdList.ExecuteNonQuery();
                         }
                     }
                 }
                 else
                 {
-                    SQLiteCommand addProdList = new SQLiteCommand("INSERT INTO product_list_in_purchase (id_product, id_purchase, price_product_in_purchase, count_product_in_purchase)" +
-                    " VALUES ('" + id_product + "', '" + id_purchase + "', '" + price_product + "', '" + count_product + "')", ConnectionToDB.DB);
+                    SQLiteCommand addProdList = new SQLiteCommand("INSERT INTO product_list_in_purchase (id_product, id_purchase, price_product_in_purchase, count_product_in_purchase, isnewproduct)" +
+                    " VALUES ('" + id_product + "', '" + id_purchase + "', '" + price_product + "', '" + count_product + "', 'false')", ConnectionToDB.DB);
                     addProdList.ExecuteNonQuery();
                 }
 
@@ -91,16 +91,16 @@ namespace Trading_Company
                     }
                     else
                     {
-                        SQLiteCommand addProdList = new SQLiteCommand("INSERT INTO product_list_in_purchase (id_product, id_purchase, price_product_in_purchase, count_product_in_purchase)" +
-                " VALUES ('" + id_product + "', '" + id_purchase + "', '" + price_product + "', '" + count_product + "')", ConnectionToDB.DB);
+                        SQLiteCommand addProdList = new SQLiteCommand("INSERT INTO product_list_in_purchase (id_product, id_purchase, price_product_in_purchase, count_product_in_purchase, isnewproduct)" +
+                " VALUES ('" + id_product + "', '" + id_purchase + "', '" + price_product + "', '" + count_product + "', 'true')", ConnectionToDB.DB);
                         addProdList.ExecuteNonQuery();
                     }
                 }
             }
             else
             {
-                SQLiteCommand addProdList = new SQLiteCommand("INSERT INTO product_list_in_purchase (id_product, id_purchase, price_product_in_purchase, count_product_in_purchase)" +
-                " VALUES ('" + id_product + "', '" + id_purchase + "', '" + price_product + "', '" + count_product + "')", ConnectionToDB.DB);
+                SQLiteCommand addProdList = new SQLiteCommand("INSERT INTO product_list_in_purchase (id_product, id_purchase, price_product_in_purchase, count_product_in_purchase, isnewproduct)" +
+                " VALUES ('" + id_product + "', '" + id_purchase + "', '" + price_product + "', '" + count_product + "', 'true')", ConnectionToDB.DB);
                 addProdList.ExecuteNonQuery();
             }
 
@@ -254,6 +254,7 @@ namespace Trading_Company
                 {
                     ProductListInPurchase_Load(sender, e);
                 }
+                ProductListInPurchase_Load(sender, e);
             }
         }
 
