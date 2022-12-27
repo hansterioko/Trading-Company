@@ -93,5 +93,15 @@ namespace Trading_Company
             ConnectionToDB.closeDB();
             this.Close();
         }
+
+        private void telNumbBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Получаем символ, который ввёл пользователь
+            char number = e.KeyChar;
+
+            // Если пользователь ввёл не цифру,запятую и не нажал на Backspace, то не отображаем символ в textbox
+            if (!Char.IsDigit(number) && number != 44 && number != 8)
+                e.Handled = true;
+        }
     }
 }

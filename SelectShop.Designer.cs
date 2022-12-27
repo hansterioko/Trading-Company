@@ -132,6 +132,7 @@ namespace Trading_Company
             this.telNumbBox.Name = "telNumbBox";
             this.telNumbBox.Size = new System.Drawing.Size(149, 20);
             this.telNumbBox.TabIndex = 20;
+            this.telNumbBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.telNumbBox_KeyPress);
             // 
             // nameBox
             // 
