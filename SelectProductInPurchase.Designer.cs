@@ -65,6 +65,7 @@ namespace Trading_Company
             // 
             // bAdding
             // 
+            this.bAdding.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bAdding.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.bAdding.Location = new System.Drawing.Point(13, 349);
             this.bAdding.Name = "bAdding";
@@ -76,6 +77,7 @@ namespace Trading_Company
             // 
             // bExit
             // 
+            this.bExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.bExit.Location = new System.Drawing.Point(625, 349);
             this.bExit.Name = "bExit";
@@ -94,6 +96,7 @@ namespace Trading_Company
             this.Controls.Add(this.bExit);
             this.Controls.Add(this.bAdding);
             this.Controls.Add(this.productsGridView);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "SelectProductInPurchase";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

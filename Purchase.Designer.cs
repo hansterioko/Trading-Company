@@ -41,6 +41,7 @@ namespace Trading_Company
             // 
             // bExitToMenu
             // 
+            this.bExitToMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bExitToMenu.Location = new System.Drawing.Point(486, 312);
             this.bExitToMenu.Name = "bExitToMenu";
             this.bExitToMenu.Size = new System.Drawing.Size(149, 30);
@@ -87,9 +88,12 @@ namespace Trading_Company
             this.purchaseGridView.Size = new System.Drawing.Size(453, 330);
             this.purchaseGridView.TabIndex = 2;
             this.purchaseGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.purchaseGridView_CellClick);
+            this.purchaseGridView.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.purchaseGridView_CellMouseEnter);
+            this.purchaseGridView.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.purchaseGridView_CellMouseLeave);
             // 
             // bAdding
             // 
+            this.bAdding.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bAdding.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.bAdding.Location = new System.Drawing.Point(496, 12);
             this.bAdding.Name = "bAdding";
@@ -101,6 +105,7 @@ namespace Trading_Company
             // 
             // bReport
             // 
+            this.bReport.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.bReport.Location = new System.Drawing.Point(496, 107);
             this.bReport.Name = "bReport";

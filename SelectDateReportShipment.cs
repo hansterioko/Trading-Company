@@ -19,21 +19,27 @@ namespace Trading_Company
 
         private void bOk_Click(object sender, EventArgs e)
         {
-            DateTime fromDateTime = fromDateTime = fromDate.Value.Date + fromTimePicker.Value.TimeOfDay;
+            DateTime fromDateTime = fromDate.Value.Date + fromTimePicker.Value.TimeOfDay;
 
 
-            DateTime byDateTime = byDateTime = byDate.Value.Date + byTimePicker.Value.TimeOfDay;
+            DateTime byDateTime = byDate.Value.Date + byTimePicker.Value.TimeOfDay;
 
 
-
-
-            Report report = new Report(fromDateTime, byDateTime, true);
-            report.ShowDialog();
+            if (fromDateTime >= byDateTime)
+            {
+                MessageBox.Show("Сделайте значение начального периода меньшим, чем значение конечного периода", "Некоректный период", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                Report report = new Report(fromDateTime, byDateTime, true);
+                report.ShowDialog();
+            }
         }
 
         private void SelectDateReportShipment_Load(object sender, EventArgs e)
         {
             byTimePicker.Value = DateTime.Now;
+            fromTimePicker.Value = DateTime.Now;
         }
 
         private void bExit_Click(object sender, EventArgs e)

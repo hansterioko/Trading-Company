@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Data;
 using System.Drawing;
+using System.Collections.Generic;
 
 namespace Trading_Company
 {
@@ -14,6 +15,49 @@ namespace Trading_Company
         public ProductListInPurchase()
         {
             InitializeComponent();
+        }
+
+        public ProductListInPurchase(List<Product> products)
+        {
+            InitializeComponent();
+            foreach (Product item in products)
+            {
+                this.id_purchase = item.Id_purchase;
+                int id_product = item.Id_product;
+                int count_product = item.Count_products;
+                int price_product = item.Price_product;
+
+                ConnectionToDB.openDB();
+
+                SQLiteCommand ifCMD = new SQLiteCommand("SELECT id_product FROM product_list_in_purchase WHERE id_product = '" + id_product + "' AND id_purchase = '" + id_purchase + "'", ConnectionToDB.DB);
+                if (ifCMD.ExecuteScalar() != null)
+                {
+                    SQLiteCommand upd = new SQLiteCommand("SELECT id_product, price_product_in_purchase FROM product_list_in_purchase WHERE id_product = '" + id_product + "' AND id_purchase = '" + id_purchase + "'", ConnectionToDB.DB);
+                    SQLiteDataReader reader = upd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        if (Convert.ToInt32(reader["price_product_in_purchase"]) == price_product)
+                        {
+                            upd = new SQLiteCommand("UPDATE product_list_in_purchase SET count_product_in_purchase = count_product_in_purchase + '" + count_product + "' WHERE id_product = '" + Convert.ToInt32(reader["id_product"]) + "' AND id_purchase = '" + id_purchase + "' AND price_product_in_purchase = '" + price_product + "' AND count_product_in_purchase = '" + count_product + "'", ConnectionToDB.DB);
+                            upd.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            SQLiteCommand addProdList = new SQLiteCommand("INSERT INTO product_list_in_purchase (id_product, id_purchase, price_product_in_purchase, count_product_in_purchase)" +
+                    " VALUES ('" + id_product + "', '" + id_purchase + "', '" + price_product + "', '" + count_product + "')", ConnectionToDB.DB);
+                            addProdList.ExecuteNonQuery();
+                        }
+                    }
+                }
+                else
+                {
+                    SQLiteCommand addProdList = new SQLiteCommand("INSERT INTO product_list_in_purchase (id_product, id_purchase, price_product_in_purchase, count_product_in_purchase)" +
+                    " VALUES ('" + id_product + "', '" + id_purchase + "', '" + price_product + "', '" + count_product + "')", ConnectionToDB.DB);
+                    addProdList.ExecuteNonQuery();
+                }
+
+                ConnectionToDB.closeDB();
+            }
         }
 
         // от формы выбора времени создана закупка, значит передаётся её id

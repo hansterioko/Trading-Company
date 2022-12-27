@@ -46,6 +46,7 @@ namespace Trading_Company
             // 
             // bOK
             // 
+            this.bOK.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bOK.Location = new System.Drawing.Point(84, 159);
             this.bOK.Name = "bOK";
             this.bOK.Size = new System.Drawing.Size(75, 23);

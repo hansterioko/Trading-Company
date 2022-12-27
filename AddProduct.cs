@@ -63,7 +63,7 @@ namespace Trading_Company
         private void bAddProductInList_Click(object sender, EventArgs e)
         {
 
-            if (nameBox1.Text != "" && categoryBox2.Text != "" && unitBox3.Text != "" && vatBox4.Text != "" && countBox1.Text != "" && priceBox.Text != "")
+            if (nameBox1.Text != "" && categoryBox2.Text != "" && unitBox3.Text != "" && vatBox4.Text != "" && countBox1.Text != "" && priceBox.Text != "" && richSummaryBox.Text != "")
             {
                 ConnectionToDB.openDB();
 

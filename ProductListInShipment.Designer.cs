@@ -67,6 +67,7 @@ namespace Trading_Company
             // 
             // discountBar
             // 
+            this.discountBar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.discountBar.Location = new System.Drawing.Point(333, 393);
             this.discountBar.Maximum = 100;
             this.discountBar.Name = "discountBar";
@@ -77,6 +78,7 @@ namespace Trading_Company
             // 
             // bUpdShipment
             // 
+            this.bUpdShipment.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bUpdShipment.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.bUpdShipment.Location = new System.Drawing.Point(596, 310);
             this.bUpdShipment.Name = "bUpdShipment";
@@ -88,6 +90,7 @@ namespace Trading_Company
             // 
             // bExit
             // 
+            this.bExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.bExit.Location = new System.Drawing.Point(664, 405);
             this.bExit.Name = "bExit";
@@ -130,6 +133,7 @@ namespace Trading_Company
             this.Controls.Add(this.bUpdShipment);
             this.Controls.Add(this.discountBar);
             this.Controls.Add(this.shipListGridView);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ProductListInShipment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

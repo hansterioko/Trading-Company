@@ -46,6 +46,7 @@ namespace Trading_Company
             // 
             // bExit
             // 
+            this.bExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.bExit.Location = new System.Drawing.Point(34, 352);
             this.bExit.Name = "bExit";
@@ -57,6 +58,7 @@ namespace Trading_Company
             // 
             // comboCompany
             // 
+            this.comboCompany.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboCompany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboCompany.FormattingEnabled = true;
             this.comboCompany.Location = new System.Drawing.Point(13, 13);
@@ -138,6 +140,7 @@ namespace Trading_Company
             // 
             // bAddCompany
             // 
+            this.bAddCompany.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bAddCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.bAddCompany.Location = new System.Drawing.Point(13, 284);
             this.bAddCompany.Name = "bAddCompany";

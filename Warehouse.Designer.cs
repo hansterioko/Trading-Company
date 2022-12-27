@@ -36,6 +36,7 @@ namespace Trading_Company
             // 
             // bExitToMenu
             // 
+            this.bExitToMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bExitToMenu.Location = new System.Drawing.Point(359, 391);
             this.bExitToMenu.Name = "bExitToMenu";
             this.bExitToMenu.Size = new System.Drawing.Size(160, 30);

@@ -38,6 +38,7 @@ namespace Trading_Company
             // 
             // bAddProduct
             // 
+            this.bAddProduct.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bAddProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.bAddProduct.Location = new System.Drawing.Point(438, 131);
             this.bAddProduct.Name = "bAddProduct";
@@ -67,6 +68,7 @@ namespace Trading_Company
             // 
             // bTradingToPurchase
             // 
+            this.bTradingToPurchase.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bTradingToPurchase.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.bTradingToPurchase.Location = new System.Drawing.Point(438, 21);
             this.bTradingToPurchase.Name = "bTradingToPurchase";
@@ -78,6 +80,7 @@ namespace Trading_Company
             // 
             // bExit
             // 
+            this.bExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.bExit.Location = new System.Drawing.Point(490, 275);
             this.bExit.Name = "bExit";

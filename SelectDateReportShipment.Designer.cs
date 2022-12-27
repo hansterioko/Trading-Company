@@ -41,6 +41,7 @@ namespace Trading_Company
             // 
             // bExit
             // 
+            this.bExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.bExit.Location = new System.Drawing.Point(17, 243);
             this.bExit.Name = "bExit";
@@ -52,6 +53,7 @@ namespace Trading_Company
             // 
             // bOk
             // 
+            this.bOk.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.bOk.Location = new System.Drawing.Point(121, 243);
             this.bOk.Name = "bOk";
@@ -83,6 +85,7 @@ namespace Trading_Company
             // 
             // byDate
             // 
+            this.byDate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.byDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.byDate.Location = new System.Drawing.Point(12, 204);
             this.byDate.Name = "byDate";
@@ -91,6 +94,7 @@ namespace Trading_Company
             // 
             // byTimePicker
             // 
+            this.byTimePicker.Cursor = System.Windows.Forms.Cursors.Hand;
             this.byTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.byTimePicker.Location = new System.Drawing.Point(12, 169);
             this.byTimePicker.Name = "byTimePicker";
@@ -100,6 +104,7 @@ namespace Trading_Company
             // 
             // fromDate
             // 
+            this.fromDate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.fromDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.fromDate.Location = new System.Drawing.Point(12, 94);
             this.fromDate.Name = "fromDate";
@@ -109,6 +114,7 @@ namespace Trading_Company
             // 
             // fromTimePicker
             // 
+            this.fromTimePicker.Cursor = System.Windows.Forms.Cursors.Hand;
             this.fromTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.fromTimePicker.Location = new System.Drawing.Point(12, 59);
             this.fromTimePicker.Name = "fromTimePicker";

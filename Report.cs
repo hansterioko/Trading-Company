@@ -57,8 +57,9 @@ namespace Trading_Company
             
             if (selectCompanyForReport.ShowDialog() == DialogResult.OK)
             {
+                if(selectCompanyForReport.listCompany.Count > 0)
                 listCompany = selectCompanyForReport.listCompany;
-              //  MessageBox.Show("Диалог рез ОК");
+
                 Report_Load(sender, e);
             }
         }
@@ -68,7 +69,10 @@ namespace Trading_Company
             SelectShopForReport selectShopForReport = new SelectShopForReport();
             if (selectShopForReport.ShowDialog() == DialogResult.OK)
             {
-                listShop = selectShopForReport.listShop;
+                if (selectShopForReport.listShop.Count > 0)
+                {
+                    listShop = selectShopForReport.listShop;
+                }
 
                 Report_Load(sender, e);
             }

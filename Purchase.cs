@@ -66,5 +66,23 @@ namespace Trading_Company
             selectDateReport.Show();
             this.Close();
         }
+
+        private void purchaseGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                this.purchaseGridView.Cursor = Cursors.Hand;
+                purchaseGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.AliceBlue;
+            }
+        }
+
+        private void purchaseGridView_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                this.purchaseGridView.Cursor = Cursors.Default;
+                purchaseGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+            }
+        }
     }
 }

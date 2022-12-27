@@ -46,6 +46,7 @@ namespace Trading_Company
             // 
             // bAddShop
             // 
+            this.bAddShop.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bAddShop.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.bAddShop.Location = new System.Drawing.Point(12, 283);
             this.bAddShop.Name = "bAddShop";
@@ -137,6 +138,7 @@ namespace Trading_Company
             // 
             // comboShop
             // 
+            this.comboShop.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboShop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboShop.FormattingEnabled = true;
             this.comboShop.Location = new System.Drawing.Point(12, 12);
@@ -147,6 +149,7 @@ namespace Trading_Company
             // 
             // bExit
             // 
+            this.bExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.bExit.Location = new System.Drawing.Point(33, 351);
             this.bExit.Name = "bExit";
@@ -175,6 +178,7 @@ namespace Trading_Company
             this.Controls.Add(this.nameBox);
             this.Controls.Add(this.comboShop);
             this.Controls.Add(this.bExit);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

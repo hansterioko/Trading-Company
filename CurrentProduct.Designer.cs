@@ -140,6 +140,7 @@ namespace Trading_Company
             // 
             // bDeleteProduct
             // 
+            this.bDeleteProduct.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bDeleteProduct.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.bDeleteProduct.Location = new System.Drawing.Point(15, 304);
             this.bDeleteProduct.Name = "bDeleteProduct";
@@ -161,6 +162,7 @@ namespace Trading_Company
             // 
             // bChange
             // 
+            this.bChange.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bChange.Location = new System.Drawing.Point(15, 334);
             this.bChange.Name = "bChange";
             this.bChange.Size = new System.Drawing.Size(154, 23);
@@ -171,6 +173,7 @@ namespace Trading_Company
             // 
             // bOk
             // 
+            this.bOk.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bOk.Location = new System.Drawing.Point(178, 334);
             this.bOk.Name = "bOk";
             this.bOk.Size = new System.Drawing.Size(141, 23);

@@ -53,6 +53,7 @@ namespace Trading_Company
             // 
             // bExit
             // 
+            this.bExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.bExit.Location = new System.Drawing.Point(171, 334);
             this.bExit.Name = "bExit";

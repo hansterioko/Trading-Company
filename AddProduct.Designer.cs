@@ -252,6 +252,7 @@ namespace Trading_Company
             this.Controls.Add(this.bAddPhoto);
             this.Controls.Add(this.nameBox1);
             this.Controls.Add(this.picturePhoto);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;
             this.Name = "AddProduct";

@@ -19,16 +19,22 @@ namespace Trading_Company
 
         private void bOk_Click(object sender, EventArgs e)
         {
-            DateTime fromDateTime = fromDateTime = fromDate.Value.Date + fromTimePicker.Value.TimeOfDay;
+
+            DateTime fromDateTime = fromDate.Value.Date + fromTimePicker.Value.TimeOfDay;
 
 
-            DateTime byDateTime = byDateTime = byDate.Value.Date + byTimePicker.Value.TimeOfDay;
+            DateTime byDateTime =  byDate.Value.Date + byTimePicker.Value.TimeOfDay;
 
-
-
-
-            Report report = new Report(fromDateTime, byDateTime, false);
-            report.ShowDialog();
+            if (fromDateTime >= byDateTime)
+            {
+                MessageBox.Show("Сделайте значение начального периода меньшим, чем значение конечного периода", "Некоректный период", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                Report report = new Report(fromDateTime, byDateTime, false);
+                report.ShowDialog();
+            }
+            
             //this.Close();
         }
 
@@ -43,6 +49,26 @@ namespace Trading_Company
         {
             fromTimePicker.Value = DateTime.Now;
             byTimePicker.Value = DateTime.Now;
+        }
+
+        private void byTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void byDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fromDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fromTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -38,6 +38,7 @@ namespace Trading_Company
             // 
             // bExitToMenu
             // 
+            this.bExitToMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bExitToMenu.Location = new System.Drawing.Point(571, 386);
             this.bExitToMenu.Name = "bExitToMenu";
             this.bExitToMenu.Size = new System.Drawing.Size(160, 30);
@@ -65,6 +66,7 @@ namespace Trading_Company
             // 
             // bAddShipment
             // 
+            this.bAddShipment.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bAddShipment.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.bAddShipment.Location = new System.Drawing.Point(600, 9);
             this.bAddShipment.Name = "bAddShipment";
@@ -76,6 +78,7 @@ namespace Trading_Company
             // 
             // bShipmentReport
             // 
+            this.bShipmentReport.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bShipmentReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.bShipmentReport.Location = new System.Drawing.Point(599, 94);
             this.bShipmentReport.Name = "bShipmentReport";

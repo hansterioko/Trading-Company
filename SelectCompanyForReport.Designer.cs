@@ -60,6 +60,7 @@ namespace Trading_Company
             // 
             // bOk
             // 
+            this.bOk.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.bOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.bOk.Location = new System.Drawing.Point(508, 401);
@@ -72,6 +73,7 @@ namespace Trading_Company
             // 
             // bExit
             // 
+            this.bExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.bExit.Location = new System.Drawing.Point(12, 401);
             this.bExit.Name = "bExit";

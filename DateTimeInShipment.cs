@@ -22,7 +22,8 @@ namespace Trading_Company
 
         private void DateTimeInShipment_Load(object sender, EventArgs e)
         {
-
+            dateTimePicker1.Value = DateTime.Now;
+            dateTimePicker2.Value = DateTime.Now;
         }
 
         private void bOK_Click(object sender, EventArgs e)

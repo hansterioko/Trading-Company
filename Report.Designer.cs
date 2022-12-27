@@ -58,6 +58,7 @@ namespace Trading_Company
             // 
             // bSelectCompany
             // 
+            this.bSelectCompany.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bSelectCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.bSelectCompany.Location = new System.Drawing.Point(54, 444);
             this.bSelectCompany.Name = "bSelectCompany";
@@ -69,6 +70,7 @@ namespace Trading_Company
             // 
             // bSelectShop
             // 
+            this.bSelectShop.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bSelectShop.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.bSelectShop.Location = new System.Drawing.Point(450, 444);
             this.bSelectShop.Name = "bSelectShop";
@@ -80,6 +82,7 @@ namespace Trading_Company
             // 
             // bSaveFile
             // 
+            this.bSaveFile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bSaveFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.bSaveFile.Location = new System.Drawing.Point(253, 444);
             this.bSaveFile.Name = "bSaveFile";
@@ -99,6 +102,7 @@ namespace Trading_Company
             this.Controls.Add(this.bSelectCompany);
             this.Controls.Add(this.richReport);
             this.Controls.Add(this.label1);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
